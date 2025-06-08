@@ -1,0 +1,70 @@
+/**
+ * For more details on how to configure Wrangler, refer to:
+ * https://developers.cloudflare.com/workers/wrangler/configuration/
+ */
+{
+	"$schema": "../node_modules/wrangler/config-schema.json",
+	"name": "authentication",
+	"main": "./dist/handleRequest.js",
+	"compatibility_date": "2025-06-07",
+	"compatibility_flags": [
+		"nodejs_compat",
+		"global_fetch_strictly_public"
+	],
+	"dev":{
+		"port": 1001
+	},
+	"build": {
+		"watch_dir": ["./src","../shared"],
+		"command": "node ./build.js",
+		"cwd": "."
+	},
+	"vars": {
+		"GOOGLE_CLIENT_ID": "33441933024-d6tu480bpjo5eerraqnbt18st88r1228.apps.googleusercontent.com",
+		"GOOGLE_AUTH_REDIRECT_URI":     "http://127.0.0.1:1001/auth/callback/google"
+	},
+	"secrets_store_secrets": [
+		{
+			"binding": "GOOGLE_OAUTH_CLIENT_SECRET",
+			"secret_name": "google-oauth-client-secret",
+			"store_id": "44ad49dd09074b15a7db7007f7de65f6"
+		}
+	],
+	"assets": {
+		"directory": "./dist/assets"
+	},
+	"observability": {
+		"enabled": true
+	},
+
+	"placement": { "mode": "smart" },
+
+	/**
+	 * Bindings
+	 * Bindings allow your Worker to interact with resources on the Cloudflare Developer Platform, including
+	 * databases, object storage, AI inference, real-time communication and more.
+	 * https://developers.cloudflare.com/workers/runtime-apis/bindings/
+	 */
+
+	/**
+	 * Environment Variables
+	 * https://developers.cloudflare.com/workers/wrangler/configuration/#environment-variables
+	 */
+	// "vars": { "MY_VARIABLE": "production_value" },
+	/**
+	 * Note: Use secrets to store sensitive data.
+	 * https://developers.cloudflare.com/workers/configuration/secrets/
+	 */
+
+	/**
+	 * Static Assets
+	 * https://developers.cloudflare.com/workers/static-assets/binding/
+	 */
+	// "assets": { "directory": "./public/", "binding": "ASSETS" },
+
+	/**
+	 * Service Bindings (communicate between multiple Workers)
+	 * https://developers.cloudflare.com/workers/wrangler/configuration/#service-bindings
+	 */
+	// "services": [{ "binding": "MY_SERVICE", "service": "my-service" }]
+}
