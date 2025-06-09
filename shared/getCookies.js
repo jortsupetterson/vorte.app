@@ -1,4 +1,4 @@
-export function getCookies(header = "") {
+export default function getCookies(header = "") {
   return Object.fromEntries(
     header.split("; ")
       .filter(Boolean)
