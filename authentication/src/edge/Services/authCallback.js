@@ -42,12 +42,26 @@ export async function authCallback(request, env) {
     `pkce_verifier=; Max-Age=0; Path=/`,
     `oauth_state=;   Max-Age=0; Path=/`
   ];
+    
+// ... tokenRes tarkistus pysyy ennallaan
+const tokenData = await tokenRes.json();           // <- ota JSON, älä .text()
+const idToken   = tokenData.id_token;              // JWT-merkkijono
 
-  return new Response(null, {
-    status: 302,
+// Base64URL-dekoodaus ilman ulkoisia kirjastoja
+function b64urlDecode(b64url) {
+  return atob(b64url.replace(/-/g, '+').replace(/_/g, '/'));
+}
+
+const [, payloadB64] = idToken.split('.');         // header.payload.signature
+const payload       = JSON.parse(b64urlDecode(payloadB64));
+
+const { sub, email, name, picture } = payload;
+
+const reponse = JSON.stringify(payload)
+
+  return new Response(reponse,{ 
     headers: {
-      "Set-Cookie": setCookies,
-      "Location":   "/dash"
+      "content-type":"text"
     }
   });
 }

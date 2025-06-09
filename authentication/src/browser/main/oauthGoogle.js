@@ -5,8 +5,9 @@ export function startGoogleLogin() {
     const { codeVerifier, codeChallenge, state } = e.data;
 
     // Tallenna tiukasti cookieihin
-    document.cookie = `pkce_verifier=${encodeURIComponent(codeVerifier)}; Path=/; Secure; SameSite=Strict`;
-    document.cookie = `oauth_state=${state}; Path=/; Secure; SameSite=Strict`;
+ const attrs = location.protocol === "https:" ? "Secure; SameSite=Lax" : "SameSite=Lax";
+  document.cookie = `pkce_verifier=${codeVerifier}; Path=/; ${attrs}`;
+  document.cookie = `oauth_state=${state}; Path=/; ${attrs}`;
 
     // Ohjataan backend‐endpointille
     window.location.href =
