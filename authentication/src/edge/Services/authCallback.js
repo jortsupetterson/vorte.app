@@ -13,10 +13,10 @@ export async function authCallback(url, request, env) {
   if (cookies.auth_provider === "google") {
     // import the module, grab the function, and call it with the right args
     const { exchangeTokenWithGoogle } = await import("./authGoogle.js");
-    tokenRes = await exchangeTokenWithGoogle(request, env, cookies);
+    tokenRes = await exchangeTokenWithGoogle(env, cookies);
   } else if (cookies.auth_provider === "ms") {
     const { exchangeTokenWithMs } = await import("./authMs.js");
-    tokenRes = await exchangeTokenWithMs(request, env, cookies);
+    tokenRes = await exchangeTokenWithMs(env, cookies);
   } else {
     return new Response("Unknown auth_provider", { status: 400 });
   }

@@ -24,6 +24,7 @@
  *     `code_challenge_method=S256`, and `state`.
  *   - A 400 Bad Request if `code_challenge` or `state` is missing.
  */
+
 export function requestAuthFromMs(url, env) {
   const tenant  = env.MS_TENANT_ID || "common";
   const challenge = url.searchParams.get("code_challenge");
@@ -77,7 +78,8 @@ export function requestAuthFromMs(url, env) {
  *     `{ access_token, refresh_token?, id_token, expires_in, ... }` on success.
  *   - A 502 Bad Gateway Response with the error message if the token exchange fails.
  */
-export async function exchangeTokenWithMs() {
+
+export async function exchangeTokenWithMs(env, cookies) {
   const tenant  = env.MS_TENANT_ID || "common";
   const tokenUrl = `https://login.microsoftonline.com/${tenant}/oauth2/v2.0/token`;
   const clientSecret = await env.MS_CLIENT_SECRET.get();

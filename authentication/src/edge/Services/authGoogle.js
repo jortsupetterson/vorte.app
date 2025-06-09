@@ -63,7 +63,7 @@ export function requestAuthFromGoogle(url, env) {
  *     (`access_token`, `id_token`, `expires_in`, etc.).
  *   - On failure: a 502 Bad Gateway Response with the error message.
  */
-export async function exchangeTokenWithGoogle(env) {
+export async function exchangeTokenWithGoogle(env, cookies) {
 
   const clientSecret = await env.GOOGLE_OAUTH_CLIENT_SECRET.get();
 
