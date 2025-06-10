@@ -25,9 +25,8 @@
  *   - A 400 Bad Request if `code_challenge` or `state` is missing.
  */
 
-
 export function requestAuthFromMs(url, env) {
-  const tenant    = env.MS_TENANT_ID || "common";
+  const tenant  = env.MS_TENANT_ID || "common";
   const challenge = url.searchParams.get("code_challenge");
   const state     = url.searchParams.get("state");
 
@@ -38,6 +37,7 @@ export function requestAuthFromMs(url, env) {
   const authUrl = new URL(
     `https://login.microsoftonline.com/${tenant}/oauth2/v2.0/authorize`
   );
+
   authUrl.searchParams.set("client_id",             env.MS_CLIENT_ID);
   authUrl.searchParams.set("redirect_uri",          env.AUTH_REDIRECT_URI);
   authUrl.searchParams.set("response_type",         "code");
@@ -47,17 +47,7 @@ export function requestAuthFromMs(url, env) {
   authUrl.searchParams.set("code_challenge_method", "S256");
   authUrl.searchParams.set("state",                 state);
 
-return new Response(null, {
-  status: 302,
-  headers: {
-    "Location": authUrl.toString(),
-    "Set-Cookie": [
-      `pkce_verifier=${challenge}; Path=/; Secure; SameSite=None; HttpOnly`,
-      `oauth_state=${state};      Path=/; Secure; SameSite=None; HttpOnly`,
-      `auth_provider=google;      Path=/; Secure; SameSite=None`
-    ]
-  }
-});
+  return Response.redirect(authUrl.toString(), 302);
 }
 
 

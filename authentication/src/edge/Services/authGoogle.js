@@ -39,18 +39,7 @@ export function requestAuthFromGoogle(url, env) {
   authUrl.searchParams.set("code_challenge_method", "S256");
   authUrl.searchParams.set("state",                 state);
 
-
-return new Response(null, {
-  status: 302,
-  headers: {
-    "Location": authUrl.toString(),
-    "Set-Cookie": [
-      `pkce_verifier=${challenge}; Path=/; Secure; SameSite=None; HttpOnly`,
-      `oauth_state=${state};      Path=/; Secure; SameSite=None; HttpOnly`,
-      `auth_provider=google;      Path=/; Secure; SameSite=None`
-    ]
-  }
-});
+  return Response.redirect(authUrl, 302);
 }
 
 /**
@@ -76,7 +65,7 @@ return new Response(null, {
  *     (`access_token`, `id_token`, `expires_in`, etc.).
  *   - On failure: a 502 Bad Gateway Response with the error message.
  */
-export async function exchangeTokenWithGoogle(env,cookies,code) {
+export async function exchangeTokenWithGoogle(env, cookies, code) {
 
   const clientSecret = await env.GOOGLE_OAUTH_CLIENT_SECRET.get();
 
