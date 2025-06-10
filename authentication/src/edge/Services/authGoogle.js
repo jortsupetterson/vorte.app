@@ -73,7 +73,7 @@ export async function exchangeTokenWithGoogle(env, cookies, code) {
     code,
     client_id:     env.GOOGLE_CLIENT_ID,
     client_secret: clientSecret,
-    redirect_uri:  env.GOOGLE_AUTH_REDIRECT_URI,
+    redirect_uri:  env.AUTH_REDIRECT_URI,
     grant_type:    "authorization_code",
     code_verifier: cookies.pkce_verifier
   });

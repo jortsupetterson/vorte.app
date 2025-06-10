@@ -88,7 +88,7 @@ export async function exchangeTokenWithMs(env, cookies, code) {
     code,
     client_id:     env.MS_CLIENT_ID,
     client_secret: clientSecret,
-    redirect_uri:  env.MS_AUTH_REDIRECT_URI,
+    redirect_uri:  env.AUTH_REDIRECT_URI,
     grant_type:    "authorization_code",
     code_verifier: cookies.pkce_verifier
   });
