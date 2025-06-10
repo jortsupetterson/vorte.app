@@ -13,7 +13,7 @@
  *     The OAuth 2.0 Client ID from your Azure AD app registration.
  *   @param {string} env.AUTH_REDIRECT_URI
  *     The redirect URI registered in Azure AD settings,
- *     e.g. `https://your-app.com/auth/callback/microsoft`.
+ *     e.g. `https://your-app.com/auth/callback/`.
  *   @param {string} [env.MS_TENANT_ID]
  *     (Optional) The Azure AD tenant identifier (`common`, `organizations`, `consumers` or GUID).
  *     Defaults to `"common"`.
@@ -59,13 +59,13 @@ export function requestAuthFromMs(url, env) {
  *   The authorization code from Microsoft (extracted from the callback URL).
  * @param {Object} env
  *   Cloudflare Workers environment bindings:
- *     @param {Secret} env.MS_CLIENT_SECRET
+ *     @param {Secret} env.MS_OAUTH_CLIENT_SECRET
  *       The client secret stored securely in the Secrets Store.
  *     @param {string} env.MS_CLIENT_ID
  *       The OAuth 2.0 Client ID from your Azure AD app registration.
- *     @param {string} env.MS_AUTH_REDIRECT_URI
+ *     @param {string} env.AUTH_REDIRECT_URI
  *       The redirect URI registered in your Azure AD app settings
- *       (e.g. `https://your-app.com/auth/callback/microsoft`).
+ *       (e.g. `https://your-app.com/auth/callback/`).
  *     @param {string} [env.MS_TENANT_ID]
  *       (Optional) The Azure AD tenant identifier (`common`, `organizations`, `consumers` or GUID).
  *       Defaults to `"common"` if not provided.
@@ -82,7 +82,7 @@ export function requestAuthFromMs(url, env) {
 export async function exchangeTokenWithMs(env, cookies, code) {
   const tenant  = env.MS_TENANT_ID || "common";
   const tokenUrl = `https://login.microsoftonline.com/${tenant}/oauth2/v2.0/token`;
-  const clientSecret = await env.MS_CLIENT_SECRET.get();
+  const clientSecret = await env.MS_OAUTH_CLIENT_SECRET.get();
 
   const params = new URLSearchParams({
     code,
