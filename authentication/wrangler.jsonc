@@ -4,6 +4,7 @@
  */
 {
 	"$schema": "../node_modules/wrangler/config-schema.json",
+	"account_id": "e8ef5da3c57b544081f2e4181d6cecc9",
 	"name": "authentication-v-0-0-0",
 	"main": "./dist/handleRequest.js",
 	"compatibility_date": "2025-06-07",
@@ -22,7 +23,7 @@
 	"vars": {
 		"AUTH_REDIRECT_URI": "http://localhost:1001/auth/callback",
 		"GOOGLE_CLIENT_ID": "33441933024-d6tu480bpjo5eerraqnbt18st88r1228.apps.googleusercontent.com",
-		"MS_TENANT_ID": "6f282712-8b86-4bea-b88c-d9a91c2a3141",
+		"MS_TENANT_ID": "common",
 		"MS_CLIENT_ID": "a73701fa-69d7-4823-8559-b27c24684daa"
 	},
 	"secrets_store_secrets": [
@@ -34,7 +35,15 @@
 		{
 			"binding": "MS_OAUTH_CLIENT_SECRET",
 			"secret_name": "ms-oauth-client-secret",
-			"store_id": "44ad49dd09074b15a7db7007f7de65f6"
+			"store_id": "44ad49dd09074b15a7db7007f7de65f6",
+		}
+	],
+	"kv_namespaces": [
+		{
+			"binding": "USER_IDENTIFIERS_KV",
+			"id": "16b7f10d0c794ddcb0793305f80107df",
+			"preview_id": "3c74d70e263b4de9a7c97399266a66f3",
+			"remote": true
 		}
 	],
 	"assets": {
@@ -45,6 +54,30 @@
 	},
 
 	"placement": { "mode": "smart" },
+
+	"routes": [
+		"vorte.app/auth",
+		"vorte.app/fi/kirjaudu-sisään",
+		"vorte.app/kirjaudu-sisään",
+		"vorte.app/sv/logga-in",
+		"vorte.app/logga-in",
+		"vorte.app/en/sign-in",
+		"vorte.app/sign-in",
+		"vorte.app/auth/",
+		"vorte.app/fi/kirjaudu-sisään/",
+		"vorte.app/kirjaudu-sisään/",
+		"vorte.app/sv/logga-in/",
+		"vorte.app/logga-in/",
+		"vorte.app/en/sign-in/",
+		"vorte.app/sign-in/",
+		"vorte.app/auth/*",
+		"vorte.app/fi/kirjaudu-sisään/*",
+		"vorte.app/kirjaudu-sisään/*",
+		"vorte.app/sv/logga-in/*",
+		"vorte.app/logga-in/*",
+		"vorte.app/en/sign-in/*",
+		"vorte.app/sign-in/*"
+	]
 
 	/**
 	 * Bindings

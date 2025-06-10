@@ -19,7 +19,6 @@ export default {
       const { authCallback } = await import("./Services/authCallback.js");
       return authCallback(url, request, env);
     }
-
         const lang = getUserLanguage(request,url);
 
         const view = renderView(lang,url)
@@ -28,5 +27,5 @@ export default {
                 "content-type":"text/html"
             }
         })
-	},
+	}
 };

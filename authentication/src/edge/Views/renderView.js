@@ -24,7 +24,7 @@ return `
 <html lang="fi" data-theme="dark" data-contrast="normal">
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/auth/style.css">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 ${getSearchEngineCard(lang,title,description, urls)}
 
