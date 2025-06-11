@@ -1,0 +1,11 @@
+{
+    "uid":"foo123456789",
+    "aliase":[""],
+    "email":"foo@example.com",
+    "firstName":"Foo",
+    "lastName":"Foo",
+    "theme":"normal",
+    "contrast":"dark",
+    "highlights":["hex"],
+    "methods":[""]
+}

@@ -1,6 +1,6 @@
 import getCookies from "../../../../shared/getCookies.js"
 
-export async function authCallback(url, request, env) {
+export async function authnCallback(url, request, env) {
   const code    = url.searchParams.get("code");
   const state   = url.searchParams.get("state");
   const cookies = getCookies(request.headers.get("Cookie"));
@@ -10,15 +10,15 @@ export async function authCallback(url, request, env) {
   }
 
   let tokenRes;
-  if (cookies.auth_provider === "google") {
+  if (cookies.authn_method === "google") {
     // import the module, grab the function, and call it with the right args
-    const { exchangeTokenWithGoogle } = await import("./authGoogle.js");
+    const { exchangeTokenWithGoogle } = await import("./authnGoogle.js");
     tokenRes = await exchangeTokenWithGoogle(env, cookies, code);
-  } else if (cookies.auth_provider === "ms") {
-    const { exchangeTokenWithMs } = await import("./authMs.js");
+  } else if (cookies.authn_method === "ms") {
+    const { exchangeTokenWithMs } = await import("./authnMs.js");
     tokenRes = await exchangeTokenWithMs(env, cookies, code);
   } else {
-    return new Response("Unknown auth_provider", { status: 400 });
+    return new Response("Unknown authn_method", { status: 400 });
   }
 
   if (!tokenRes.ok) {

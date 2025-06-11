@@ -25,7 +25,7 @@
  *   - A 400 Bad Request if `code_challenge` or `state` is missing.
  */
 
-export function requestAuthFromMs(url, env) {
+export function requestAuthnViaMs(url, env) {
   const tenant  = env.MS_TENANT_ID || "common";
   const challenge = url.searchParams.get("code_challenge");
   const state     = url.searchParams.get("state");

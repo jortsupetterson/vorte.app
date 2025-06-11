@@ -3,7 +3,7 @@
   font-style: normal;
   font-weight: 100; /* testaa ensin vain “regular” */
   font-display: auto;
-  src: url('https://e8ef5da3c57b544081f2e4181d6cecc9.r2.cloudflarestorage.com/assets/fonts/Inter/static/Inter_18pt-Light.ttf') format('truetype');
+  src: url('https://assets.vorte.app/fonts/Inter/static/Inter_18pt-Light.ttf') format('truetype');
 }
 
 @font-face {
@@ -11,7 +11,7 @@
   font-style: normal;
   font-weight: 400; /* testaa ensin vain “regular” */
   font-display: auto;
-  src: url('https://e8ef5da3c57b544081f2e4181d6cecc9.r2.cloudflarestorage.com/assets/fonts/Inter/static/Inter_18pt-Light.ttf') format('truetype');
+  src: url('https://assets.vorte.app/fonts/Inter/static/Inter_18pt-Light.ttf') format('truetype');
 }
 /* Poppins Thin (100) */
 @font-face {
@@ -19,7 +19,7 @@
   font-style: normal;
   font-weight: 100;
   font-display: auto;
-  src: url('https://e8ef5da3c57b544081f2e4181d6cecc9.r2.cloudflarestorage.com/assets/fonts/Poppins/Poppins-Thin.ttf') format('truetype');
+  src: url('https://assets.vorte.app/fonts/Poppins/Poppins-Thin.ttf') format('truetype');
 }
 
 /* Poppins Regular (400) */
@@ -28,7 +28,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: auto;
-  src: url('https://e8ef5da3c57b544081f2e4181d6cecc9.r2.cloudflarestorage.com/assets/fonts/Poppins/Poppins-Regular.ttf') format('truetype');
+  src: url('https://assets.vorte.app/fonts/Poppins/Poppins-Regular.ttf') format('truetype');
 }
 
 
@@ -81,7 +81,8 @@
 
 
 body {
-      animation: fadeIn 0.5s ease-out;
+      animation: fadeIn 0.25s ease-out;
+      transition: opacity 0.25s ease-out;
       left: 50%;
       transform: translateX(-50%);
       height: 100vh;

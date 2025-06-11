@@ -1,0 +1,12 @@
+{
+	"$schema": "../node_modules/wrangler/config-schema.json",
+	"account_id": "e8ef5da3c57b544081f2e4181d6cecc9",
+	"name": "seo-v-0-0-0",
+	"compatibility_date": "2025-06-07",
+	"assets": {
+		"directory": "./docs"
+	},
+	"routes": [
+		"vorte.app/*",
+	]
+}

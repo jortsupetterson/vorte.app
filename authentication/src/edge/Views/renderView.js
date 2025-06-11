@@ -14,9 +14,9 @@ const description = {
 };
 
 const urls = {
-  fi: "/fi/tunnistautuminen",
-  sv: "/sv/autentisering",
-  en: "/en/authentication"
+  fi: "/fi/kirjaudu-sisään",
+  sv: "/sv/logga-in",
+  en: "/en/sign-in"
 };
 
 return `
@@ -24,7 +24,7 @@ return `
 <html lang="fi" data-theme="dark" data-contrast="normal">
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="/auth/style.css">
+<link rel="stylesheet" href="/authn/style.css">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 ${getSearchEngineCard(lang,title,description, urls)}
 
@@ -107,7 +107,7 @@ ${getSearchEngineCard(lang,title,description, urls)}
       </div>
       <output id="feedback"></output>
   </form>
-        <script src="/auth/initAuth.js"></script>
+        <script src="/authn/initAuthn.js"></script>
 </body>
 </html>
     `

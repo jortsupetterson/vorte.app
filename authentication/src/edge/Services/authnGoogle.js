@@ -22,7 +22,7 @@
  *     `code_challenge_method=S256`, and `state`.
  *   - A 400 Bad Request response if `code_challenge` or `state` is missing.
  */
-export function requestAuthFromGoogle(url, env) {
+export function requestAuthnViaGoogle(url, env) {
   const challenge = url.searchParams.get("code_challenge");
   const state     = url.searchParams.get("state");
 
