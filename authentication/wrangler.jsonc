@@ -23,8 +23,9 @@
 	"vars": {
 		"AUTH_REDIRECT_URI": "http://localhost:1001/authn/callback",
 		"GOOGLE_CLIENT_ID": "33441933024-d6tu480bpjo5eerraqnbt18st88r1228.apps.googleusercontent.com",
-		"MS_TENANT_ID": "common",
-		"MS_CLIENT_ID": "a73701fa-69d7-4823-8559-b27c24684daa"
+		"MS_CLIENT_ID": "a73701fa-69d7-4823-8559-b27c24684daa",
+		"AZURE_TENANT_ID": "6f282712-8b86-4bea-b88c-d9a91c2a3141",
+		"AZURE_COMMUNICATIONS_ENDPOINT": "https://vorte-app-messaging.europe.communication.azure.com"
 	},
 	"secrets_store_secrets": [
 		{

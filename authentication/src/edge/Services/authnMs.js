@@ -26,7 +26,7 @@
  */
 
 export function requestAuthnViaMs(url, env) {
-  const tenant  = env.MS_TENANT_ID || "common";
+  const tenant  = "common";
   const challenge = url.searchParams.get("code_challenge");
   const state     = url.searchParams.get("state");
 

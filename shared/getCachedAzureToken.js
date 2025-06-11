@@ -5,11 +5,11 @@ export default async function getCachedAzureToken(env) {
   if (res) {
     return await res.text();
   }
-
+const secret = await env.MS_OAUTH_CLIENT_SECRET.get();
   const params = new URLSearchParams({
     grant_type: "client_credentials",
-    client_id: env.AZURE_CLIENT_ID,
-    client_secret: env.AZURE_CLIENT_SECRET,
+    client_id: env.MS_CLIENT_ID,
+    client_secret: secret,
     scope: "https://communication.azure.com/.default"
   });
 

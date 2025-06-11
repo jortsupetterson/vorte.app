@@ -16,10 +16,11 @@ export async function startAuthnFlow({ method, email=null }) {
 
   // 3) Ohjaa oikeaan endpointiin
   let url = `/authn/${method}?code_challenge=${codeChallenge}&state=${state}`;
+
   if (method === 'magic-link') {
     // magic-link vaatii myös emailin queryssa
     url += `&email=${encodeURIComponent(email)}`;
-  window.location.href = url;
 }
+
 window.location.href = url;
 }
