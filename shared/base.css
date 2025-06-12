@@ -81,8 +81,8 @@
 
 
 body {
-      animation: fadeIn 0.25s ease-out;
-      transition: opacity 0.25s ease-out;
+      animation: fadeIn 0.15s ease-out;
+      transition: opacity 0.15s ease-out;
       left: 50%;
       transform: translateX(-50%);
       height: 100vh;

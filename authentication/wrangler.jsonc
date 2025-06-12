@@ -37,6 +37,11 @@
 			"binding": "MS_OAUTH_CLIENT_SECRET",
 			"secret_name": "ms-oauth-client-secret",
 			"store_id": "44ad49dd09074b15a7db7007f7de65f6",
+		},
+				{
+			"binding": "TURNSTILE_SECRET",
+			"secret_name": "turnstile-secret",
+			"store_id": "44ad49dd09074b15a7db7007f7de65f6",
 		}
 	],
 	"kv_namespaces": [

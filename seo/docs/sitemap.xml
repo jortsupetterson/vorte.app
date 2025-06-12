@@ -67,11 +67,4 @@
     <xhtml:link rel="alternate" hreflang="sv" href="https://vorte.app/sv/logga-in/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://vorte.app/en/sign-in/"/>
   </url>
-
-    <url>
-    <loc>https://vorte.app/</loc>
-    <lastmod>2025-06-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.0</priority>
-  </url>
 </urlset>

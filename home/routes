@@ -1,0 +1,34 @@
+   "routes": [
+    "vorte.app/register/*",
+
+    // suomi
+    "vorte.app/fi",
+    "vorte.app/fi/",
+    "vorte.app/fi/koti",
+    "vorte.app/fi/koti/",
+    "vorte.app/fi/kotisivu",
+    "vorte.app/fi/kotisivu/",
+    "vorte.app/fi/koti-sivu",
+    "vorte.app/fi/koti-sivu/",
+
+    // svenska
+    "vorte.app/sv",
+    "vorte.app/sv/",
+    "vorte.app/sv/hem",
+    "vorte.app/sv/hem/",
+    "vorte.app/sv/startsida",
+    "vorte.app/sv/startsida/",
+    "vorte.app/sv/hemsida",
+    "vorte.app/sv/hemsida/",
+
+    // english
+    "vorte.app/en",
+    "vorte.app/en/",
+    "vorte.app/en/home",
+    "vorte.app/en/home/",
+    "vorte.app/en/home-page",
+    "vorte.app/en/home-page/",
+    "vorte.app/en/index",
+    "vorte.app/en/index/"
+  ]
+

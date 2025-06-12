@@ -1,4 +1,6 @@
 import getSearchEngineCard from "../../../../shared/getSearchEngineCard.js"
+import getOpenGraphCard from "../../../../shared/getOpenGraphCard.js"
+import getTwitterCard from "../../../../shared/getTwitterCard.js";
 export default function renderView(lang, url) {
 
 const title = {
@@ -20,17 +22,18 @@ const urls = {
 };
 
 return `
-    <!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="fi" data-theme="dark" data-contrast="normal">
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/authn/style.css">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-${getSearchEngineCard(lang,title,description, urls)}
-
+${getSearchEngineCard(lang, title, description, urls)}
+${getOpenGraphCard(lang, title, description, urls)}
+${getTwitterCard(lang, title, description, urls)}
 </head>
   <body>
-  <form id="singup" class="login" novalidate >
+  <form class="login" novalidate >
     <header>
       <p>
         ${{
@@ -91,6 +94,8 @@ ${getSearchEngineCard(lang,title,description, urls)}
       </button>
     </div>
 
+    <div class="cf-turnstile" data-sitekey="0x4AAAAAABfpGcyoBCK_N8CO"></div>
+
       <div>
       <details>
         <summary>Aseta istunnon kesto +</summary>
@@ -107,7 +112,8 @@ ${getSearchEngineCard(lang,title,description, urls)}
       </div>
       <output id="feedback"></output>
   </form>
-        <script src="/authn/initAuthn.js"></script>
+        <script src="/authn/initAuthn.js" async defer></script>
+        <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </body>
 </html>
     `
