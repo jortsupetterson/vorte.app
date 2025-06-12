@@ -11,12 +11,13 @@ export async function authnCallback(url, request, env) {
 
   let tokenRes;
   if (cookies.authn_method === "google") {
-    // import the module, grab the function, and call it with the right args
     const { exchangeTokenWithGoogle } = await import("./authnGoogle.js");
     tokenRes = await exchangeTokenWithGoogle(env, cookies, code);
   } else if (cookies.authn_method === "ms") {
     const { exchangeTokenWithMs } = await import("./authnMs.js");
     tokenRes = await exchangeTokenWithMs(env, cookies, code);
+  } else if (cookies.authn_method === "magic-link") {
+    return new Response("Moikka botti")
   } else {
     return new Response("Unknown authn_method", { status: 400 });
   }
