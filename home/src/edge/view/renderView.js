@@ -1,7 +1,9 @@
 import getSearchEngineCard from "../../../../shared/getSearchEngineCard.js"
 import getOpenGraphCard from "../../../../shared/getOpenGraphCard.js"
-export default function renderView(lang, url) {
-
+import getTwitterCard from "../../../../shared/getTwitterCard.js";
+import getSchemaLD from "../../../../shared/getSchemaLD.js";
+import renderHeroSection from "./sections/1-HeroSection.js";
+export default function renderView(lang, nonce, url) {
 const title = {
       fi: "Ota taloutesi haltuun ja etene urallasi | Vorte",
       sv: "Ta kontroll över din ekonomi och karriär | Vorte",
@@ -21,6 +23,20 @@ const urls = {
 };
 
 return `
-
+  <!DOCTYPE html>
+  <html lang="${lang}" data-theme="dark" data-contrast="normal">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/home/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    ${getSearchEngineCard(lang,title,description,urls)}
+    ${getOpenGraphCard(lang,title,description,urls)}
+    ${getTwitterCard(lang,title,description,urls)}
+    ${getSchemaLD(lang,nonce, title,description,urls)}
+  </head>
+  <body>
+    ${renderHeroSection(url,lang)}
+  </body>
+  </html>
 `
 };

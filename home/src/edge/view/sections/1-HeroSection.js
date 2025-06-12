@@ -1,6 +1,6 @@
-import getEnvironmentBasedURL from "../../../../shared/js/getEnviromentBasedURL.js"
+import getEnvironmentBasedURL from "../../../../../shared/getEnviromentBasedURL.js"
 
-export default function heroSection(url,lang){
+export default function renderHeroSection(url,lang){
     return `
         <section id="hero">
             <h1 class="highlight">

@@ -1,5 +1,5 @@
 import getCachedAzureToken from "../../../../shared/getCachedAzureToken.js";
-import renderEmailView from "../views/renderEmailView.js";
+import renderEmailView from "../view/renderEmailView.js";
 
 export async function requestAuthnViaMagicLink(url, env, lang) {
 

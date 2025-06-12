@@ -1,5 +1,5 @@
 import getUserLanguage from "../../../shared/getUserLanguage.js"
-import renderView from "./views/renderView.js";
+import renderView from "./view/renderView.js";
 
 export default {
 	async fetch(request, env) {

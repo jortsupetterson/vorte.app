@@ -3,7 +3,7 @@
   font-style: normal;
   font-weight: 100; /* testaa ensin vain “regular” */
   font-display: auto;
-  src: url('https://assets.vorte.app/fonts/Inter/static/Inter_18pt-Light.ttf') format('truetype');
+  src: url('https://assets.vorte.app/fonts/Inter/Inter-VariableFont_opsz,wght.ttf') format('truetype');
 }
 
 @font-face {
@@ -11,7 +11,7 @@
   font-style: normal;
   font-weight: 400; /* testaa ensin vain “regular” */
   font-display: auto;
-  src: url('https://assets.vorte.app/fonts/Inter/static/Inter_18pt-Light.ttf') format('truetype');
+  src: url('https://assets.vorte.app/fonts/Inter/Inter-VariableFont_opsz,wght.ttf') format('truetype');
 }
 /* Poppins Thin (100) */
 @font-face {
@@ -120,6 +120,11 @@ body {
   -webkit-mask-repeat: no-repeat;
 }
 
+section {
+    position: relative;
+    min-width: 80%;
+    max-width: 80%;
+}
 
 p {
       margin: 0;
