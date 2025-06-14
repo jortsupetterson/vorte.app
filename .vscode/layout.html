@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="fi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ohjauspaneeli</title>
+  <style>
+    @font-face {
+      font-family: Inter;
+      font-style: normal;
+      font-weight: 100;
+      font-display: auto;
+      src: url(https://assets.vorte.app/fonts/Inter/Inter-VariableFont_opsz,wght.ttf) format("truetype")
+    }
+    @font-face {
+      font-family: Inter;
+      font-style: normal;
+      font-weight: 400;
+      font-display: auto;
+      src: url(https://assets.vorte.app/fonts/Inter/Inter-VariableFont_opsz,wght.ttf) format("truetype")
+    }
+    @font-face {
+      font-family: Poppins;
+      font-style: normal;
+      font-weight: 100;
+      font-display: auto;
+      src: url(https://assets.vorte.app/fonts/Poppins/Poppins-Thin.ttf) format("truetype")
+    }
+    @font-face {
+      font-family: Poppins;
+      font-style: normal;
+      font-weight: 400;
+      font-display: auto;
+      src: url(https://assets.vorte.app/fonts/Poppins/Poppins-Regular.ttf) format("truetype")
+    }
+    :root {
+      --primary: #199473;
+      --primary-ghost: rgba(25, 148, 115, .6);
+      --secondary: #0B4F60;
+      --secondary-ghost: rgba(11, 79, 96, .6);
+      --br1: .4vh;
+      --br2: .8vh;
+      --br3: 2vh;
+      min-width: 100vw;
+      min-height: 100vh;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: Inter,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+      font-weight: 400;
+      overflow-x: hidden;
+      overflow-y: auto;
+      text-rendering: optimizeLegibility;
+      font-kerning: none;
+      font-variant-ligatures: none;
+      font-feature-settings: "liga" 0,"kern" 0;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    :root[data-theme=light] {
+      --text: #000000;
+      --bg: #ffffff;
+      --bg-ghost: rgba(0,0,0,0.05);
+    }
+    :root[data-theme=dark] {
+      --text: #ffffff;
+      --bg: #000000;
+      --bg-ghost: rgba(255,255,255,0.05);
+    }
+    :root[data-contrast=normal] {
+      filter: contrast(1);
+    }
+    :root[data-contrast=low] {
+      filter: contrast(.8);
+    }
+    :root[data-contrast=high] {
+      filter: contrast(1.2);
+    }
+    @keyframes fadeIn {
+      0% { opacity: 0 }
+      to { opacity: 1 }
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0 }
+    body {
+      animation: fadeIn .15s ease-out;
+      transition: opacity .15s ease-out;
+      left: 50%;
+      transform: translateX(-50%);
+      height: 100vh;
+      width: 100%;
+      max-width: 1920px;
+      position: relative;
+      overflow: visible;
+      scroll-behavior: smooth;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      background-color: var(--bg);
+      mask-image: linear-gradient(to right,transparent 0%,var(--bg) 8%,var(--bg) 92%,transparent 100%);
+      mask-size: 100% 100%;
+      mask-repeat: no-repeat;
+      -webkit-mask-image: linear-gradient(to right,transparent 0%,var(--bg) 8%,var(--bg) 92%,transparent 100%);
+      -webkit-mask-size: 100% 100%;
+      -webkit-mask-repeat: no-repeat;
+    }
+    section { min-width: 80%; max-width: 80% }
+    a { line-height: normal; text-decoration: none; color: var(--text) }
+    ul { list-style: none }
+    .primary { color: var(--primary) }
+    .dev { position: fixed; bottom: 2vh }
+    .highlight { font-family: Poppins; }
+
+    ::-webkit-scrollbar {
+      width: 1vw;
+      height: 100px;
+    }
+    ::-webkit-scrollbar-track {
+      background-color: var(--bg-ghost);
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: rgba(176, 192, 198, 0.5);
+      border-radius: 1vw;
+    }
+    ::-webkit-scrollbar-thumb:horizontal {
+      min-width: 1vw;
+    }
+    ::-webkit-scrollbar-button {
+      display: none;
+      width: 0;
+      height: 0;
+    }
+    ::-webkit-scrollbar-corner {
+      background-color: rgba(176, 192, 198, 0.5);
+    }
+
+    .sidebar {
+      position: fixed;
+      z-index: 10;
+      margin: 0;
+      bottom: 2.5%;
+      left: 2.5%;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: flex-start;
+      width: 20%;
+      transition: transform .3s ease;
+      will-change: transform;
+      transform: translateX(0);
+      background: var(--bg-ghost);
+      height: 82.5%;
+      border-radius: var(--br3);}
+
+    .sidebar.toggled {
+      transform: translateX(-105%);}
+
+    .sidebar header {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      height: 20vh;
+      width: 90%;}
+    
+      .sidebar header p {
+      font-size: 20px;
+      transform: none;}
+    
+      .sidebar header p::before {
+      content: "";
+      display: inline-block;
+      width: 0.5vh;
+      height: 3vh;
+      transform: translate(-1vh, 0.5vh);
+      background: var(--secondary);}
+
+    .sidebar nav {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;}
+
+    .sidebar nav ul {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 2vh;}
+
+    .sidebar nav ul li::before {
+      content: "";
+      display: inline-block;
+      width: 0.25vh;
+      height: 2.5vh;
+      transform: translate(-1vh, 0.5vh);
+      background: var(--primary);}
+
+    .sidebar nav ul li a {
+      font-size: 15px;}
+  
+    
+  #hide {
+    position: fixed;
+    max-width: fit-content;
+    color: var(--text);
+    right: 3vh;
+    top: 3vh;
+    border: none;
+    background: none;
+  }
+
+  #show {
+    position: fixed;
+    color: var(--text);
+    z-index: 5;
+    max-width: fit-content;
+    left: 4%;
+    top: 18%;
+    border: none;
+    background: none;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .3s ease;
+  }
+
+  #show.visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .banner {
+    position: fixed;
+    z-index: 10;
+    top: 2.5%;
+    left: 50%;
+    transform: translate(-50%,0);
+    margin: 0;
+    min-width: 95%;
+    min-height: 10%;
+    background: var(--bg-ghost);
+    border-radius: var(--br3);
+
+  }
+
+  .banner h1 {
+    position: absolute;
+    left: 10%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    font-size: medium;
+  }
+
+  .banner a#user-settings {
+    position: absolute;
+    left: 25%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    font-size: medium;
+  }
+
+  .banner a#sign-out {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    font-size: medium;
+  }
+
+  .banner ul.language-selector {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    right: 15%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    font-size: medium;
+    max-height: 3vh;
+  }
+
+  .banner ul.language-selector li {
+    border-right: solid 1px black;
+    padding: 0vw 10%;
+  }
+
+  .banner ul.language-selector li:last-of-type {
+    border: none;
+  }
+
+  #hide:hover, #hide:focus,
+   #show:hover, #show:focus,
+    a:hover, a:focus {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  a#sign-out:hover, a#sign-out:focus {
+    color: red;
+  }
+
+  main {
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2.5vh;
+    right: 2.5%;
+    bottom: 2.5%;
+    padding: 5%;
+    z-index: 0;
+    min-width: 72.5%;
+    min-height: 82.5%;
+    max-width: 72.5%;
+    max-height: 82.5%;
+    background: var(--bg-ghost);
+    border-radius: var(--br3);
+    transition: min-width .3s ease;
+    will-change: min-width;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+  }
+
+    main.toggled {
+      min-width: 95%;
+    }
+
+    main button#toggle {
+      position: absolute;
+      top: 3vh;
+      left: 3vh;
+      min-height: 0.9vw;
+      min-width: 1.6vw;
+      border: solid 1.5px var(--text);
+      border-radius: var(--br1);
+    }
+
+    main button#toggle::after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 20%;
+      left: 0;
+      min-height: 0.5px;
+      min-width: 100%;
+      background:  var(--text);
+    }
+
+    main button#toggle::before {
+      content: "";
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 5px;
+      min-height: 80%;
+      min-width: 1px;
+      background: var(--text);
+    }
+
+        main button#toggle.toggled::before {
+      background: transparent;
+    }
+
+
+    button {
+      cursor: pointer;
+    }
+
+    .item {
+      min-width: 20vh;
+      min-height: 20vh;
+      max-width: 20vh;
+      max-height: 20vh;
+      background: #0B4F60;
+      border-radius: var(--br2);
+    }
+
+    #add-widget {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translate(-50%,0%);
+      border: none;
+      background: none;
+      color: var(--text);
+    }
+    #add-widget:hover,#add-widget:focus {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+    <header class="banner" role="banner">
+       <h1>
+          Botti Example
+       </h1>
+       <a href=""
+       id="user-settings"
+       >
+        käyttäjän asetukset
+       </a>
+
+       <ul class="language-selector">
+          <li><a href="">FI</a></li>
+          <li><a href="">SV</a></li>
+          <li><a href="">EN</a></li>
+       </ul>
+
+       
+       <a href=""
+       id="sign-out"
+       >
+        kirjaudu ulos
+       </a>
+    </header>
+
+    <main>
+      <button id="toggle">
+      </button>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+
+        <button id="add-widget">lisää widget</button>
+    </main>
+
+    <aside class="sidebar">
+      <header>
+        <span></span>
+        <p>SOVELLUKSET:</p>
+      </header>
+      <nav>
+          <ul>        
+          <li><a href="">Polku yrittäjäksi</a></li>
+          <li><a href="">Tee kilpailutus</a></li>
+          <li><a href="">Oma talous</a></li>
+          <li><a href="">To do</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+<script>
+  const aside      = document.querySelector('.sidebar');
+  const main       = document.querySelector('main');
+  const toggle    = document.getElementById('toggle');
+
+  function setSidebar(open, pushState = true) {
+    // aside hidden / visible
+    aside.classList.toggle('toggled', !open);
+    // show-button näkyvyys
+    toggle.classList.toggle('toggled', !open);
+    // main full-width
+    main.classList.toggle('toggled', !open);
+
+    if (pushState) {
+      history.replaceState({ sidebarOpen: open }, '', location.href);
+    }
+  }
+
+  // alusta tila history.state:stä
+  window.addEventListener('DOMContentLoaded', () => {
+    const wasOpen = history.state?.sidebarOpen;
+    setSidebar(wasOpen === undefined ? true : wasOpen, false);
+  });
+
+  // back/forward -napit
+  window.addEventListener('popstate', ev => {
+    const open = ev.state?.sidebarOpen;
+    setSidebar(open === undefined ? true : open, false);
+  });
+
+toggle.addEventListener('click', () => {
+  // jos sidebarissa on .toggled, se on kiinni → avaa; muuten sulje
+  const shouldOpen = aside.classList.contains('toggled');
+  setSidebar(shouldOpen, true);
+});
+
+</script>
+
+</body>
+</html>
