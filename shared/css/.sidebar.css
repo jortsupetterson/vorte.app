@@ -1,0 +1,67 @@
+    .sidebar {
+      position: fixed;
+      z-index: 10;
+      margin: 0;
+      bottom: 2.5%;
+      left: 2.5%;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: flex-start;
+      width: 20%;
+      transition: transform .3s ease;
+      will-change: transform;
+      transform: translateX(0);
+      background: var(--bg-ghost);
+      height: 82%;
+      font-family: 'Inter';
+      border-radius: var(--br3);}
+
+    .sidebar.toggled {
+      transform: translateX(-120%);}
+
+    .sidebar header {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      margin-top: 0%;
+      height: 15%;
+      width: 90%;}
+    
+      .sidebar header p {
+      font-size: 20px;
+      transform: none;}
+    
+      .sidebar header p::before {
+      content: "";
+      display: inline-block;
+      width: 3px;
+      height: 3vh;
+      transform: translate(-1vh, 1px);
+      background: var(--secondary);}
+
+    .sidebar nav {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;}
+
+    .sidebar nav ul {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      transform: translate(-5%,0);
+      gap: 2vh;}
+
+    .sidebar nav ul li::before {
+      content: "";
+      display: inline-block;
+      width: 3px;
+      height: 2.5vh;
+      transform: translate(-1vh, 1px);
+      background: var(--primary);}
+
+    .sidebar nav ul li a {
+      font-weight: 200;
+      font-size: 18px;}

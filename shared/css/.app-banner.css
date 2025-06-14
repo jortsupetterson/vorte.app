@@ -1,0 +1,73 @@
+  .app-banner {
+    position: fixed;
+    z-index: 10;
+    top: 2.5%;
+    left: 50%;
+    transform: translate(-50%,0);
+    margin: 0;
+    min-width: 95%;
+    min-height: 11.5%;
+    background: var(--bg-ghost);
+    border-radius: var(--br3);
+    font-family: 'Inter';
+
+  }
+
+  .app-banner h1 {
+    position: absolute;
+    font-family: 'Inter';
+    left: 7.5%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    font-size: medium;
+  }
+
+  .app-banner a#user-settings {
+    position: absolute;
+    left: 20%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    font-weight: 200;
+    font-size: 14px;
+    opacity: 0.75;
+  }
+
+  .app-banner a#sign-out {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    font-size: medium;
+  }
+
+  .app-banner ul.language-selector {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    right: 20%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    font-size: medium;
+    max-height: 3vh;
+  }
+
+  .app-banner ul.language-selector li {
+    border-right: solid 1px var(--text);
+    font-weight: 100;
+    font-size: 14px;
+    padding: 0vw 25%;
+    opacity: 0.75;
+  }
+
+  .app-banner ul.language-selector li:last-of-type {
+    border: none;
+  }
+
+  a:hover, a:focus {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  a#sign-out:hover, a#sign-out:focus {
+    color: red;
+  }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fi" data-theme="light">
+<html lang="fi" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -81,8 +81,9 @@
     }
     * { box-sizing: border-box; margin: 0; padding: 0 }
     body {
-      animation: fadeIn .15s ease-out;
-      transition: opacity .15s ease-out;
+      animation: fadeIn .25s ease-out;
+      transition: opacity .25s ease-out;
+      opacity: 1;
       left: 50%;
       transform: translateX(-50%);
       height: 100vh;
@@ -95,17 +96,15 @@
       flex-direction: column;
       justify-content: flex-start;
       align-items: center;
-      background-color: var(--bg);
-      mask-image: linear-gradient(to right,transparent 0%,var(--bg) 8%,var(--bg) 92%,transparent 100%);
-      mask-size: 100% 100%;
-      mask-repeat: no-repeat;
-      -webkit-mask-image: linear-gradient(to right,transparent 0%,var(--bg) 8%,var(--bg) 92%,transparent 100%);
-      -webkit-mask-size: 100% 100%;
-      -webkit-mask-repeat: no-repeat;
+    }
+
+    body.fade {
+      opacity: 0;
     }
     section { min-width: 80%; max-width: 80% }
     a { line-height: normal; text-decoration: none; color: var(--text) }
     ul { list-style: none }
+    button { cursor: pointer; }
     .primary { color: var(--primary) }
     .dev { position: fixed; bottom: 2vh }
     .highlight { font-family: Poppins; }
@@ -133,7 +132,7 @@
       background-color: rgba(176, 192, 198, 0.5);
     }
 
-    .sidebar {
+    .app-sidebar {
       position: fixed;
       z-index: 10;
       margin: 0;
@@ -144,90 +143,65 @@
       align-items: stretch;
       justify-content: flex-start;
       width: 20%;
-      transition: transform .3s ease;
+      transition: transform .5s ease;
       will-change: transform;
       transform: translateX(0);
       background: var(--bg-ghost);
-      height: 82.5%;
+      height: 82%;
+      font-family: 'Inter';
       border-radius: var(--br3);}
 
-    .sidebar.toggled {
-      transform: translateX(-105%);}
+    .app-sidebar.toggled {
+      transform: translateX(-150%);}
 
-    .sidebar header {
+    .app-sidebar header {
       display: flex;
       flex-direction: row;
       justify-content: center;
       align-items: center;
-      height: 20vh;
+      margin-top: 0%;
+      height: 12.5%;
       width: 90%;}
     
-      .sidebar header p {
-      font-size: 20px;
+      .app-sidebar header p {
+      font-size: 18px;
       transform: none;}
     
-      .sidebar header p::before {
+      .app-sidebar header p::before {
       content: "";
       display: inline-block;
-      width: 0.5vh;
+      width: 3.5px;
       height: 3vh;
-      transform: translate(-1vh, 0.5vh);
+      transform: translate(-7.5px, 1px);
       background: var(--secondary);}
 
-    .sidebar nav {
+    .app-sidebar nav {
       display: flex;
       flex-direction: row;
       justify-content: center;
       align-items: center;}
 
-    .sidebar nav ul {
+    .app-sidebar nav ul {
       display: flex;
       flex-direction: column;
       justify-content: center;
+      transform: translate(-5%,0);
       gap: 2vh;}
 
-    .sidebar nav ul li::before {
+    .app-sidebar nav ul li::before {
       content: "";
       display: inline-block;
-      width: 0.25vh;
+      width: 3px;
       height: 2.5vh;
-      transform: translate(-1vh, 0.5vh);
+      transform: translate(-1vh, 1px);
       background: var(--primary);}
 
-    .sidebar nav ul li a {
-      font-size: 15px;}
-  
-    
-  #hide {
-    position: fixed;
-    max-width: fit-content;
-    color: var(--text);
-    right: 3vh;
-    top: 3vh;
-    border: none;
-    background: none;
-  }
+    .app-sidebar nav ul li a {
+      font-weight: 200;
+      font-size: 18px;}
 
-  #show {
-    position: fixed;
-    color: var(--text);
-    z-index: 5;
-    max-width: fit-content;
-    left: 4%;
-    top: 18%;
-    border: none;
-    background: none;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity .3s ease;
-  }
 
-  #show.visible {
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  .banner {
+  .app-banner {
     position: fixed;
     z-index: 10;
     top: 2.5%;
@@ -235,29 +209,33 @@
     transform: translate(-50%,0);
     margin: 0;
     min-width: 95%;
-    min-height: 10%;
+    min-height: 11.5%;
     background: var(--bg-ghost);
     border-radius: var(--br3);
+    font-family: 'Inter';
 
   }
 
-  .banner h1 {
+  .app-banner h1 {
     position: absolute;
-    left: 10%;
+    font-family: 'Inter';
+    left: 7.5%;
     top: 50%;
     transform: translate(-50%,-50%);
     font-size: medium;
   }
 
-  .banner a#user-settings {
+  .app-banner a#user-settings {
     position: absolute;
-    left: 25%;
+    left: 20%;
     top: 50%;
     transform: translate(-50%,-50%);
-    font-size: medium;
+    font-weight: 200;
+    font-size: 14px;
+    opacity: 0.75;
   }
 
-  .banner a#sign-out {
+  .app-banner a#sign-out {
     position: absolute;
     right: 0;
     top: 50%;
@@ -265,28 +243,29 @@
     font-size: medium;
   }
 
-  .banner ul.language-selector {
+  .app-banner ul.language-selector {
     display: flex;
     flex-direction: row;
     position: absolute;
-    right: 15%;
+    right: 20%;
     top: 50%;
     transform: translate(-50%,-50%);
     font-size: medium;
     max-height: 3vh;
   }
 
-  .banner ul.language-selector li {
-    border-right: solid 1px black;
-    padding: 0vw 10%;
+  .app-banner ul.language-selector li {
+    border-right: solid 1px var(--text);
+    font-weight: 100;
+    font-size: 14px;
+    padding: 0vw 25%;
+    opacity: 0.75;
   }
 
-  .banner ul.language-selector li:last-of-type {
+  .app-banner ul.language-selector li:last-of-type {
     border: none;
   }
 
-  #hide:hover, #hide:focus,
-   #show:hover, #show:focus,
     a:hover, a:focus {
     text-decoration: underline;
     cursor: pointer;
@@ -296,34 +275,37 @@
     color: red;
   }
 
-  main {
+  .app-main {
     position: fixed;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 2.5vh;
+    justify-content: center;
+    align-items: center;
+    gap: 25%;
     right: 2.5%;
     bottom: 2.5%;
     padding: 5%;
     z-index: 0;
-    min-width: 72.5%;
-    min-height: 82.5%;
-    max-width: 72.5%;
-    max-height: 82.5%;
+    min-width: 74.25%;
+    min-height: 82%;
+    max-width: 74.25%;
+    max-height: 82%;
     background: var(--bg-ghost);
     border-radius: var(--br3);
-    transition: min-width .3s ease;
+    transition: min-width .5s ease;
     will-change: min-width;
     overflow-y: auto;
     overflow-x: hidden;
     scroll-behavior: smooth;
+    font-family: 'Inter';
   }
 
-    main.toggled {
+    .app-main.toggled {
       min-width: 95%;
     }
 
-    main button#toggle {
+    .app-main button#toggle {
       position: absolute;
       top: 3vh;
       left: 3vh;
@@ -331,9 +313,10 @@
       min-width: 1.6vw;
       border: solid 1.5px var(--text);
       border-radius: var(--br1);
+      background-color: transparent;
     }
 
-    main button#toggle::after {
+    .app-main button#toggle::after {
       content: "";
       display: block;
       position: absolute;
@@ -344,43 +327,56 @@
       background:  var(--text);
     }
 
-    main button#toggle::before {
+    .app-main button#toggle::before {
       content: "";
       display: block;
       position: absolute;
       bottom: 0;
       left: 5px;
       min-height: 80%;
-      min-width: 1px;
+      min-width: 0.5px;
       background: var(--text);
     }
 
-        main button#toggle.toggled::before {
+    .app-main button#toggle.toggled::before {
       background: transparent;
     }
 
+    .app-main p#heading {
+      position: absolute;
+      top: 2.75vh;
+      left: 12.5vh;
+      font-size: 18px;
+      transform: none;}
+    
+    .app-main p#heading::before {
+      content: "";
+      display: inline-block;
+      width: 3px;
+      height: 3vh;
+      transform: translate(-7.5px, 1px);
+      background: var(--secondary);}
 
-    button {
-      cursor: pointer;
-    }
 
     .item {
-      min-width: 20vh;
-      min-height: 20vh;
-      max-width: 20vh;
-      max-height: 20vh;
-      background: #0B4F60;
+      min-width: 32vh;
+      min-height: 18vh;
+      max-width: 32vh;
+      max-height: 18vh;
+      margin: 0;
+      background: var(--bg-ghost);
       border-radius: var(--br2);
     }
 
     #add-widget {
       position: absolute;
-      bottom: 0;
+      bottom: 2.5%;
       left: 50%;
       transform: translate(-50%,0%);
       border: none;
       background: none;
       color: var(--text);
+      font-family: 'Inter';
     }
     #add-widget:hover,#add-widget:focus {
       text-decoration: underline;
@@ -388,7 +384,7 @@
   </style>
 </head>
 <body>
-    <header class="banner" role="banner">
+    <header class="app-banner" role="banner">
        <h1>
           Botti Example
        </h1>
@@ -408,38 +404,22 @@
        <a href=""
        id="sign-out"
        >
-        kirjaudu ulos
+        <strong>kirjaudu ulos</strong>
        </a>
     </header>
 
-    <main>
-      <button id="toggle">
-      </button>
+    <main class="app-main">
+       <p id="heading">TÄRKEIMMÄT:</p>
+      <button id="toggle" title="Muuta näkymää"> </button>
         <div class="item"></div>
         <div class="item"></div>
         <div class="item"></div>
         <div class="item"></div>
-        <div class="item"></div>
-        <div class="item"></div>
-        <div class="item"></div>
-        <div class="item"></div>
-        <div class="item"></div>
-        <div class="item"></div>
-        <div class="item"></div>
-        <div class="item"></div>
-        <div class="item"></div>
-        <div class="item"></div>
-        <div class="item"></div>
-        <div class="item"></div>
-        <div class="item"></div>
-        <div class="item"></div>
-
-        <button id="add-widget">lisää widget</button>
+        <button id="add-widget">lisää widget <strong>+</strong></button>
     </main>
 
-    <aside class="sidebar">
+    <aside class="app-sidebar">
       <header>
-        <span></span>
         <p>SOVELLUKSET:</p>
       </header>
       <nav>
@@ -453,7 +433,7 @@
     </aside>
 
 <script>
-  const aside      = document.querySelector('.sidebar');
+  const aside      = document.querySelector('.app-sidebar');
   const main       = document.querySelector('main');
   const toggle    = document.getElementById('toggle');
 
@@ -488,6 +468,18 @@ toggle.addEventListener('click', () => {
   setSidebar(shouldOpen, true);
 });
 
+</script>
+
+<script>
+document.addEventListener('click', e => {
+  const link = e.target.closest('a');
+  if (!link || !link.href) return;
+  e.preventDefault();
+  document.body.classList.add('fade');
+  setTimeout(() => {
+    window.location.href = link.href;
+  }, 250);
+});
 </script>
 
 </body>

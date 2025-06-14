@@ -1,3 +1,4 @@
 @import url("../../../shared/base.css");
-@import url("../../../shared/layout.css");
-@import url("../../../shared/.sidebar.css");
+@import url("../../../shared/css/.app-banner.css");
+@import url("../../../shared/css/.app-main.css");
+@import url("../../../shared/css/.sidebar.css");
