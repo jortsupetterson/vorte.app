@@ -2,7 +2,7 @@
 <html lang="fi" data-theme="dark">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1, user-scalable=no">
   <title>Ohjauspaneeli</title>
   <style>
     @font-face {
@@ -98,6 +98,7 @@
       flex-direction: column;
       justify-content: flex-start;
       align-items: center;
+      zoom: 1;
     }
 
     body.fade {
@@ -392,9 +393,6 @@
       min-width: 100%;
     }
 
-
-
-
     .item {
       min-width: 32vh;
       min-height: 18vh;
@@ -404,24 +402,186 @@
       border-radius: var(--br2);
     }
 
-@media (hover: hover) and (pointer: fine) {
-   a:hover, a:focus, #add-widget:hover,#add-widget:focus {
-    text-decoration: underline;
-    cursor: pointer;
+  div.menu-buttons,#hide-banner {
+    display: none;
   }
 
-  a#sign-out:hover, a#sign-out:focus {
-    color: red;
-  }
-}
+    @media (hover: hover) and (pointer: fine) {
+       a:hover, a:focus, #add-widget:hover,#add-widget:focus {
+       text-decoration: underline;
+       cursor: pointer;
+      }
+
+      a#sign-out:hover, a#sign-out:focus {
+      color: red;
+      }
+    }
 
     @media (orientation: portrait) {
+      .app-main {
+        min-width: 95%;
+      }
 
-    }
+      .app-main header button#toggle {
+        display: none;
+      }
+      
+      .app-main header p.heading {
+        margin-left: 2vh;
+        max-height: 20px;
+        font-size: clamp(12px,2.75vh,20px);
+      }
+
+      .app-main header button#add-widget {
+        margin-right: 2vh;
+        font-size: clamp(12px,2.25vh,16px);
+        transform: translate(0,0.5vh);
+      }
+
+      .app-main header p.heading::before {
+        height: 3vh;
+        width: 0.5vh;
+        transform: translate(-1vh, 0.2vh);
+      }
+
+      .app-sidebar {
+        top: -100%;
+        transform: translateX(-100%);
+      }
+      .app-banner {
+        transition: transform .5s ease;
+        transform: translate(-50%,-110%);
+        min-height: 95%;
+        min-width: 95%;
+        background: var(--botti);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .app-banner.toggled {
+        transform: translate(-50%,0);
+      }
+
+      .app-banner button#hide-banner {
+        display: block;
+        border: none;
+        background: transparent;
+        color: var(--text);
+        position: fixed;
+        top:3vh;
+        right: 3.5vh;
+        font-size: 4vh;
+      }
+
+
+    div.menu-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    z-index: 10;
+    top: 2.5%;
+    left: 50%;
+    transform: translate(-50%,0);
+    padding: 2.5% 5%;
+    margin: 0;
+    min-width: 95%;
+    width: 95%;
+    min-height: 10%;
+    min-width: 95%;
+    height: 10%;
+    min-height: 10%;
+    background: var(--bg-ghost);
+    border-radius: var(--br3);
+    font-family: 'Inter';
+  }
+
+   div.menu-buttons button {
+    display: flex;
+    height: 5vh;
+    max-height: 5vh;
+    height: 5vh;
+    max-width: 5vh;
+    border: none;
+    background: transparent;
+    opacity: 0.9;
+  }
+
+   div.menu-buttons button#applications {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5vh;
+  }
+
+.rectangle {
+  width: 2vh;
+  height: 2vh;
+  background: var(--text);'
+  border-radius: 5%;
+}
+
+.triangle {
+  width: 0;
+  height: 0;
+  border-left: 1vh solid transparent;
+  border-right: 1vh solid transparent;
+  border-bottom: 2vh solid var(--text); 
+  border-radius: 0.1vh;
+  background: transparent;
+}
+
+.circle {
+  border-radius: 50%;
+  width: 2.1vh;
+  height: 2.1vh;
+  background: var(--text);
+}
+
+.soft-rectangle {
+  border-radius: 20%;
+  width: 2vh;
+  height: 2vh;
+  background: var(--text);
+}
+
+ div.menu-buttons button#burger {
+    flex-direction: column;
+    height: 3.5vh;
+    width: 5vh;
+    gap: 1vh;
+}
+
+ div.menu-buttons button#burger > *{
+    width: 100%;
+    height: 0.5vh;
+    background: var(--text);
+    border-radius: 0.5vh;
+}
+}
   </style>
 </head>
 <body>
+    <div class="menu-buttons">
+          <button id="applications">
+              <div class="rectangle"></div>
+              <div  class="triangle"></div>
+              <div class="circle"></div>
+              <div class="soft-rectangle"></div>
+          </button>
+
+          <button id="burger">
+              <div class="bun"></div>
+              <div class="beef"></div>
+              <div class="bun"></div>
+          </button>
+    </div>
+
     <header class="app-banner" role="banner">
+      
+      <button id="hide-banner">✕</button>
+
       <div id="first-half">
        <h1>
          <a href="">Botti Example</a>
@@ -449,7 +609,6 @@
        </a>
 
        </div>
-
     </header>
 
     <main class="app-main">
@@ -484,50 +643,75 @@
       <nav>
           <ul>        
           <li><a href="">Polku yrittäjäksi</a></li>
-          <li><a href="">Tee kilpailutus</a></li>
           <li><a href="">Oma talous</a></li>
-          <li><a href="">To do</a></li>
+          <li><a href="">To-Do</a></li>
         </ul>
       </nav>
     </aside>
 
 <script>
-  const aside      = document.querySelector('.app-sidebar');
-  const main       = document.querySelector('main');
-  const toggle    = document.getElementById('toggle');
+  function initLandscapeSidebar() {
+    const aside   = document.querySelector('.app-sidebar');
+    const main    = document.querySelector('main');
+    const toggle  = document.getElementById('toggle');
+    if (!aside || !main || !toggle) return;
 
-  function setSidebar(open, pushState = true) {
-    // aside hidden / visible
-    aside.classList.toggle('toggled', !open);
-    // show-button näkyvyys
-    toggle.classList.toggle('toggled', !open);
-    // main full-width
-    main.classList.toggle('toggled', !open);
-
-    if (pushState) {
-      history.replaceState({ sidebarOpen: open }, '', location.href);
+    function setSidebar(open, pushState = true) {
+      aside.classList.toggle('toggled', !open);
+      toggle.classList.toggle('toggled', !open);
+      main.classList.toggle('toggled', !open);
+      if (pushState) {
+        history.replaceState({ sidebarOpen: open }, '', location.href);
+      }
     }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const wasOpen = history.state?.sidebarOpen;
+      setSidebar(wasOpen === undefined ? true : wasOpen, false);
+    });
+    window.addEventListener('popstate', ev => {
+      const open = ev.state?.sidebarOpen;
+      setSidebar(open === undefined ? true : open, false);
+    });
+    toggle.addEventListener('click', () => {
+      const shouldOpen = aside.classList.contains('toggled');
+      setSidebar(shouldOpen, true);
+    });
   }
 
-  // alusta tila history.state:stä
-  window.addEventListener('DOMContentLoaded', () => {
-    const wasOpen = history.state?.sidebarOpen;
-    setSidebar(wasOpen === undefined ? true : wasOpen, false);
+  const mql = window.matchMedia('(orientation: landscape)');
+  if (mql.matches) initLandscapeSidebar();
+  mql.addEventListener('change', e => {
+    if (e.matches) {
+      initLandscapeSidebar();
+      document.querySelector(".app-banner").classList.remove("toggled")
+      document.body.focus()
+    }
   });
-
-  // back/forward -napit
-  window.addEventListener('popstate', ev => {
-    const open = ev.state?.sidebarOpen;
-    setSidebar(open === undefined ? true : open, false);
-  });
-
-toggle.addEventListener('click', () => {
-  // jos sidebarissa on .toggled, se on kiinni → avaa; muuten sulje
-  const shouldOpen = aside.classList.contains('toggled');
-  setSidebar(shouldOpen, true);
-});
-
 </script>
+
+
+<script>
+  function initPortraitMenu() {
+    const appBanner = document.querySelector(".app-banner");
+    const burgerBtn = document.getElementById("burger");
+    const hideBannerBtn = document.getElementById("hide-banner")
+    if (!appBanner || !burgerBtn) return;
+    burgerBtn.addEventListener("click", () => {
+      appBanner.classList.toggle("toggled");
+    });
+    hideBannerBtn.addEventListener("click", () => {
+      appBanner.classList.toggle("toggled");
+    });
+  }
+
+  const portraitMql = window.matchMedia("(orientation: portrait)");
+  if (portraitMql.matches) initPortraitMenu();
+  portraitMql.addEventListener("change", e => {
+    if (e.matches) initPortraitMenu();
+  });
+</script>
+
 
 <script>
 document.addEventListener('click', e => {
