@@ -22,25 +22,25 @@
  * @returns {string}     HTML string for insertion into the page.
  */
 export default function getAppBanner(lang) {
-  const dashLinks = {
-    fi: "/fi/ohjauspaneeli",
-    sv: "/sv/kontrollpanel",
-    en: "/en/control-panel"
-  };
+	const dashLinks = {
+		fi: '/fi/ohjauspaneeli',
+		sv: '/sv/kontrollpanel',
+		en: '/en/control-panel',
+	};
 
-  const personalSettingsLinks = {
-    fi: "/fi/omat-asetukset",
-    sv: "/sv/mina-inställningar",
-    en: "/en/my-settings"
-  };
+	const personalSettingsLinks = {
+		fi: '/fi/omat-asetukset',
+		sv: '/sv/mina-inställningar',
+		en: '/en/my-settings',
+	};
 
-  const logOutLinks = {
-    fi: "/fi/kirjaudu-ulos",
-    sv: "/sv/logga-ut",
-    en: "/en/sign-out"
-  };
+	const logOutLinks = {
+		fi: '/fi/kirjaudu-ulos',
+		sv: '/sv/logga-ut',
+		en: '/en/sign-out',
+	};
 
-  return `
+	return `
     <div class="menu-buttons" role="navigation" aria-label="main controls">
       <button id="applications" aria-label="open applications menu">
         <div class="rectangle"></div>
@@ -61,19 +61,16 @@ export default function getAppBanner(lang) {
       <div id="first-half">
         <h1>
           <span aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-              <!-- Font Awesome Free 6.7.2 by @fontawesome -->
-              <path d="M575.8 255.5c0 18-15 32.1-32 32.1l-32 0 …"/>
-            </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M575.8 255.5c0 18-15 32.1-32 32.1l-32 0 .7 160.2c0 2.7-.2 5.4-.5 8.1l0 16.2c0 22.1-17.9 40-40 40l-16 0c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1L416 512l-24 0c-22.1 0-40-17.9-40-40l0-24 0-64c0-17.7-14.3-32-32-32l-64 0c-17.7 0-32 14.3-32 32l0 64 0 24c0 22.1-17.9 40-40 40l-24 0-31.9 0c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2l-16 0c-22.1 0-40-17.9-40-40l0-112c0-.9 0-1.9 .1-2.8l0-69.7-32 0c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z"/></svg>
           </span>
           <a href="${dashLinks[lang]}" aria-label="go to dashboard">Botti Example</a>
         </h1>
         <a
           href="${personalSettingsLinks[lang]}"
           id="user-settings"
-          aria-label="${{fi:'omat asetukset',sv:'mina inställningar',en:'my settings'}[lang]}"
+          aria-label="${{ fi: 'omat asetukset', sv: 'mina inställningar', en: 'my settings' }[lang]}"
         >
-          ${{fi: "omat asetukset", sv: "mina inställningar", en: "my settings"}[lang]}
+          ${{ fi: 'omat asetukset', sv: 'mina inställningar', en: 'my settings' }[lang]}
         </a>
       </div>
 
@@ -89,14 +86,16 @@ export default function getAppBanner(lang) {
         <a
           href="${logOutLinks[lang]}"
           id="sign-out"
-          title="${{
-            fi: 'Poistaa istuntoevästeen ja uudelleen ohjaa sisäänkirjautumissivulle',
-            sv: 'Tar bort sessionskakan och omdirigerar till inloggningssidan',
-            en: 'Removes the session cookie and redirects to the login page'
-          }[lang]}"
-          aria-label="${{fi:'kirjaudu ulos',sv:'logga ut',en:'sign out'}[lang]}"
+          title="${
+						{
+							fi: 'Poistaa istuntoevästeen ja uudelleen ohjaa sisäänkirjautumissivulle',
+							sv: 'Tar bort sessionskakan och omdirigerar till inloggningssidan',
+							en: 'Removes the session cookie and redirects to the login page',
+						}[lang]
+					}"
+          aria-label="${{ fi: 'kirjaudu ulos', sv: 'logga ut', en: 'sign out' }[lang]}"
         >
-          <strong>${{fi: "kirjaudu ulos", sv: "logga ut", en: "sign out"}[lang]}</strong>
+          <strong>${{ fi: 'kirjaudu ulos', sv: 'logga ut', en: 'sign out' }[lang]}</strong>
         </a>
       </div>
     </header>

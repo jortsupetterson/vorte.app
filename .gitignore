@@ -175,4 +175,10 @@ wrangler.jsonc
 
 wrangler.json
 
+package-lock.json
+
+.editorconfig
+
+.prettierrc
+
 ps

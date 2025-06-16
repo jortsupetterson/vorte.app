@@ -1,0 +1,14 @@
+{
+	"routes": [
+		"vorte.app/dash/*",
+		"vorte.app/fi/ohjauspaneeli",
+		"vorte.app/fi/ohjauspaneeli/",
+		"vorte.app/fi/ohjauspaneeli/*",
+		"vorte.app/sv/kontrollpanel",
+		"vorte.app/sv/kontrollpanel/",
+		"vorte.app/sv/kontrollpanel/*",
+		"vorte.app/en/control-panel",
+		"vorte.app/en/control-panel/",
+		"vorte.app/en/control-panel/*"
+	]
+}
