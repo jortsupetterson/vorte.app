@@ -1,68 +1,59 @@
-export default function renderView() {
+import getAppBanner from "../../../../shared/getAppBanner.js"
+
+export default function renderView(lang, url) {
 
     return `
     <!DOCTYPE html>
-    <html lang="fi" data-theme="dark">
+    <html lang="fi" data-theme="dark" data-contrast="normal">
     <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/dash/style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1, user-scalable=no">
     <title>Document</title>
 </head>
 <body>
-    <header class="app-banner" role="banner">
-       <h1>
-          Botti Example
-       </h1>
-       <a href=""
-       id="user-settings"
-       >
-        käyttäjän asetukset
-       </a>
-
-       <ul class="language-selector">
-          <li><a href="">FI</a></li>
-          <li><a href="">SV</a></li>
-          <li><a href="">EN</a></li>
-       </ul>
-
-       
-       <a href=""
-       id="sign-out"
-       >
-        <strong>kirjaudu ulos</strong>
-       </a>
-    </header>
+    ${getAppBanner(lang)}
 
     <main class="app-main">
-      <button id="toggle">
-      </button>
-        <div class="item"></div>
-        <div class="item"></div>
-        <div class="item"></div>
-        <div class="item"></div>
-    
 
+      <header>
+        <button id="toggle" title="Muuta näkymää"> </button>
+        <p class="heading">TÄRKEIMMÄT:</p>
+        <button id="add-widget">lisää widget <strong>+</strong></button>
+      </header>
 
-        <button id="add-widget">lisää widget</button>
+      <div class="content">
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <footer></footer>
+      </div>
+
     </main>
 
-    <aside class="sidebar">
+    <aside class="app-sidebar">
+      <button id="hide-sidebar">✕</button>
       <header>
-        <span></span>
-        <p>SOVELLUKSET:</p>
+        <p class="heading">SOVELLUKSET:</p>
       </header>
       <nav>
           <ul>        
           <li><a href="">Polku yrittäjäksi</a></li>
-          <li><a href="">Tee kilpailutus</a></li>
           <li><a href="">Oma talous</a></li>
-          <li><a href="">To do</a></li>
+          <li><a href="">To-Do</a></li>
         </ul>
       </nav>
     </aside>
 
-<script src="/dash/attachEvents.js"></script>
+<script type="module" src="/dash/app.js" defer></script>
 </body>
 </html>
     `

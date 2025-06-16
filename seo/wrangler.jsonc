@@ -4,7 +4,7 @@
 	"name": "seo-v-0-0-0",
 	"compatibility_date": "2025-06-07",
 	"assets": {
-		"directory": "./docs"
+		"directory": "./utilities"
 	},
 	"routes": [
 		"vorte.app/*",

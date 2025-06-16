@@ -1,4 +1,10 @@
-
+<!DOCTYPE html>
+<html lang="fi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1, user-scalable=no">
+  <title>Ohjauspaneeli</title>
+  <style>
        @font-face {
       font-family: Inter;
       font-style: normal;
@@ -107,33 +113,27 @@
     .dev { position: fixed; bottom: 2vh }
     .highlight { font-family: Poppins; }
 
-    
-::-webkit-scrollbar {
-  width: 10px;
-  height: 100px;
-}
-::-webkit-scrollbar-track {
-  background-color: transparent;
-  border-radius: var(--br2);
-}
-::-webkit-scrollbar-thumb {
-  background-color: var(--bg-ghost);
-  border-radius: var(--br2);
-}
-::-webkit-scrollbar-button {
-  display: none;
-  width: 0;
-  height: 0;
-}
-::-webkit-scrollbar-corner {
-  background-color: var(--bg-ghost);
-}
+    ::-webkit-scrollbar {
+      width: 10px;
+      height: 100px;
+    }
+    ::-webkit-scrollbar-track {
+      background-color: transparent;
+            border-radius: var(--br2);
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: var(--bg-ghost);
+      border-radius: var(--br2);
+    }
 
-* {
-  scrollbar-width: thin;
-  scrollbar-color: var(--bg-ghost) transparent;
-}
-
+    ::-webkit-scrollbar-button {
+      display: none;
+      width: 0;
+      height: 0;
+    }
+    ::-webkit-scrollbar-corner {
+      background-color: var(--bg-ghost)
+    }
 
     .app-sidebar {
       position: fixed;
@@ -704,3 +704,199 @@
       transform: translate(-5px, 2.5px);
       background: var(--primary);}
 }
+  </style>
+</head>
+<body>
+    <div class="menu-buttons">
+          <button id="applications">
+              <div class="rectangle"></div>
+              <div  class="triangle"></div>
+              <div class="circle"></div>
+              <div class="soft-rectangle"></div>
+          </button>
+
+          <button id="burger">
+              <div class="bun"></div>
+              <div class="beef"></div>
+              <div class="bun"></div>
+          </button>
+    </div>
+
+    <header class="app-banner" role="banner">
+      
+      <button id="hide-banner">✕</button>
+
+      <div id="first-half">
+       <h1>
+        <span>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M575.8 255.5c0 18-15 32.1-32 32.1l-32 0 .7 160.2c0 2.7-.2 5.4-.5 8.1l0 16.2c0 22.1-17.9 40-40 40l-16 0c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1L416 512l-24 0c-22.1 0-40-17.9-40-40l0-24 0-64c0-17.7-14.3-32-32-32l-64 0c-17.7 0-32 14.3-32 32l0 64 0 24c0 22.1-17.9 40-40 40l-24 0-31.9 0c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2l-16 0c-22.1 0-40-17.9-40-40l0-112c0-.9 0-1.9 .1-2.8l0-69.7-32 0c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z"/></svg>
+        </span>
+         <a href="">Botti Example</a>
+       </h1>
+       <a href=""
+       id="user-settings"
+       >
+        käyttäjän asetukset
+       </a>
+       </div>
+
+       <div id="second-half">
+
+    <nav>
+       <ul class="language-selector">
+          <li><a href="">FI</a></li>
+          <li><a href="">SV</a></li>
+          <li><a href="">EN</a></li>
+       </ul>
+     </nav>
+
+       <a href=""
+       id="sign-out">
+        <strong>kirjaudu ulos</strong>
+       </a>
+
+       </div>
+    </header>
+
+    <main class="app-main">
+
+      <header>
+        <button id="toggle" title="Muuta näkymää"> </button>
+        <p class="heading">TÄRKEIMMÄT:</p>
+        <button id="add-widget">lisää widget <strong>+</strong></button>
+      </header>
+
+      <div class="content">
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <footer></footer>
+      </div>
+
+    </main>
+
+    <aside class="app-sidebar">
+      <button id="hide-sidebar">✕</button>
+      <header>
+        <p class="heading">SOVELLUKSET:</p>
+      </header>
+      <nav>
+          <ul>        
+          <li><a href="">Polku yrittäjäksi</a></li>
+          <li><a href="">Oma talous</a></li>
+          <li><a href="">To-Do</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+<script>
+(function() {
+  const aside           = document.querySelector('.app-sidebar');
+  const main            = document.querySelector('main');
+  const toggleBtn       = document.getElementById('toggle');
+  const appsBtn         = document.getElementById('applications');
+  const hideSidebarBtn  = document.getElementById('hide-sidebar');
+  const appBanner       = document.querySelector('.app-banner');
+  const burgerBtn       = document.getElementById('burger');
+  const hideBannerBtn   = document.getElementById('hide-banner');
+  if (!aside || !main || !toggleBtn || !appsBtn || !hideSidebarBtn ||
+      !appBanner || !burgerBtn || !hideBannerBtn) return;
+
+  // merge and replace history.state
+  function replaceState(partial) {
+    const prev = history.state || {};
+    history.replaceState({ ...prev, ...partial }, '', location.href);
+  }
+
+  // open===true means visible
+  function setSidebar(open, push=true) {
+    aside.classList.toggle('toggled', !open);
+    toggleBtn.classList.toggle('toggled', !open);
+    main.classList.toggle('toggled', !open);
+    if (push) replaceState({ sidebarOpen: open });
+  }
+
+  function setBanner(open, push=true) {
+    appBanner.classList.toggle('toggled', open);
+    if (push) replaceState({ bannerOpen: open });
+  }
+
+  // apply saved state (or defaults) without pushing
+  function applyState() {
+    const s = history.state || {};
+    setSidebar(s.sidebarOpen !== false, false);
+    setBanner(s.bannerOpen === true, false);
+  }
+
+  // DOM load & history navigation
+  window.addEventListener('DOMContentLoaded', applyState);
+  window.addEventListener('popstate', applyState);
+
+  // toggle handlers
+  toggleBtn.addEventListener('click', () => {
+    const isOpen = history.state?.sidebarOpen !== false;
+    setSidebar(!isOpen, true);
+  });
+  appsBtn.addEventListener('click', () => {
+    const isOpen = history.state?.sidebarOpen !== false;
+    setSidebar(!isOpen, true);
+  });
+  hideSidebarBtn.addEventListener('click', () => {
+    const isOpen = history.state?.sidebarOpen !== false;
+    setSidebar(!isOpen, true);
+  });
+  burgerBtn.addEventListener('click', () => {
+    const isOpen = history.state?.bannerOpen === true;
+    setBanner(!isOpen, true);
+  });
+  hideBannerBtn.addEventListener('click', () => {
+    const isOpen = history.state?.bannerOpen === true;
+    setBanner(!isOpen, true);
+  });
+
+  // orientation handlers
+  window.matchMedia('(orientation: landscape)')
+    .addEventListener('change', e => {
+      if (e.matches) {
+        applyState();
+        appBanner.classList.remove('toggled');
+        document.body.focus();
+      }
+    });
+  window.matchMedia('(orientation: portrait)')
+    .addEventListener('change', e => {
+      if (e.matches) {
+        applyState();
+        // reset to portrait defaults
+        setBanner(false, false);
+        setSidebar(true, false);
+      }
+    });
+})();
+</script>
+
+
+
+
+<script>
+document.addEventListener('click', e => {
+  const link = e.target.closest('a');
+  if (!link || !link.href) return;
+  e.preventDefault();
+  document.body.classList.add('fade');
+  setTimeout(() => {
+    window.location.href = link.href;
+  }, 125);
+});
+</script>
+
+</body>
+</html>

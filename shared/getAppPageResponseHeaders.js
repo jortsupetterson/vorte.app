@@ -1,11 +1,27 @@
+/**
+ * Generates secure HTTP response headers for application pages.
+ *
+ * This function defines a strict Content Security Policy (CSP) and other HTTP headers
+ * that enhance security, privacy, and caching behavior for app-like HTML pages.
+ *
+ * Key features:
+ * - Prevents search engine indexing via X-Robots-Tag and meta-robots ("noindex, follow")
+ * - Enforces strict CSP with support for inline styles/scripts using a dynamic nonce
+ * - Allows images and fonts to be loaded from Vorte’s asset domain
+ * - Prevents iframe embedding and legacy plugin usage (frame-ancestors, object-src)
+ * - Sets cache policy to private, no-cache with revalidation
+ * - Ensures modern browser behavior (COEP, CORP, HSTS, etc.)
+ *
+ * @param {string} lang - The content language (e.g. "en", "fi")
+ * @param {string} nonce - A unique nonce used for inline scripts/styles
+ * @returns {Object} A dictionary of HTTP headers
+ */
+
 export default function getAppPageResponseHeaders(lang, nonce) {
   const cacheControlValue = 'private, no-cache, must-revalidate';
-  const varyValue = 'Accept-Encoding'; // Lisää ', Accept-Language' jos sama URL palvelee eri kieliä
-  const referrerPolicyValue = 'no-referrer'; // tai 'strict-origin' jos analytiikka vaatii
-  // Estetään indeksointi mutta sallitaan linkkien seuraaminen:
+  const varyValue = 'Accept-Encoding, Accept-Language';
+  const referrerPolicyValue = 'no-referrer';
   const robotsTagValue = 'noindex, follow';
-
-  // Esimerkki connect-src, laajenna tarvittaessa:
   const connectSrcValue = `'self'`;
 
   return {
@@ -24,16 +40,10 @@ export default function getAppPageResponseHeaders(lang, nonce) {
     "Cross-Origin-Opener-Policy": "same-origin",
     "Cross-Origin-Resource-Policy": "same-origin",
     "X-UA-Compatible": "IE=edge",
-
-    // Estä indeksointi, mutta salli linkkien seuraaminen:
     "X-Robots-Tag": robotsTagValue,
-
-    // Dynaaminen, käyttäjäkohtainen sisältö: yksityinen cache, revalidointi aina
     "Cache-Control": cacheControlValue,
-    // ETag-arvo generoitava sisällön tilan mukaan tuotannossa:
     "ETag": `"autogenerate-if-needed"`,
     "Vary": varyValue,
-
     "Content-Type": "text/html; charset=utf-8",
     "Content-Language": lang
   };

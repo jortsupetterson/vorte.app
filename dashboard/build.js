@@ -4,4 +4,4 @@ import buildBrowserRuntime from "../shared/buildBrowserRuntime.js"
 
 buildEdgeRuntime("./src/edge/handleRequest", "./dist");
 buildBrowserRuntime("./src/styles/style.css","./dist/assets/dash")
-buildStyleSheet("./src/browser/main/attachEvents.js","./dist/assets/dash");
+buildStyleSheet("./src/browser/main/app.js","./dist/assets/dash");

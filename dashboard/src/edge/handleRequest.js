@@ -12,6 +12,6 @@ export default {
 
         const page = renderView()
 
-        return new Response(page, { status: 200, headers: getAppPageResponseHeaders(lang, nonce) })
+        return new Response(page, { status: 200, headers: getAppPageResponseHeaders(lang, nonce), 'Cache-Control': 'no-store' })
     }
 }
