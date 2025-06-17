@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="fi" data-theme="light">
+<html lang="en" data-theme="light">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no" />
-		<title>Ohjauspaneeli</title>
+		<title>Omat asetukset | Vorte</title>
+
 		<style>
 			@font-face {
 				font-family: Inter;
@@ -114,10 +115,6 @@
 				opacity: 0;
 			}
 
-			section {
-				min-width: 80%;
-				max-width: 80%;
-			}
 			a {
 				line-height: normal;
 				text-decoration: none;
@@ -160,86 +157,6 @@
 			}
 			::-webkit-scrollbar-corner {
 				background-color: var(--bg-ghost);
-			}
-
-			.app-sidebar {
-				position: fixed;
-				z-index: 10;
-				margin: 0;
-				bottom: 2.5%;
-				left: 2.5%;
-				display: flex;
-				flex-direction: column;
-				align-items: stretch;
-				justify-content: flex-start;
-				width: 20%;
-				transition: transform 0.5s ease;
-				will-change: transform;
-				transform: translateX(0);
-				background: var(--bg-ghost);
-				height: 82%;
-				font-family: 'Inter';
-				border-radius: var(--br3);
-			}
-
-			.app-sidebar.toggled {
-				transform: translateX(-112.5%);
-			}
-
-			.app-sidebar header {
-				display: flex;
-				flex-direction: row;
-				justify-content: center;
-				align-items: center;
-				margin-top: 0%;
-				height: 12.5%;
-				width: 90%;
-			}
-
-			.heading {
-				font-size: clamp(12px, 1.5vw, 18px);
-			}
-
-			p.heading::before {
-				content: '';
-				display: inline-block;
-				width: 0.25vw;
-				max-width: 5px;
-				height: 1.75vw;
-				max-height: 20px;
-				transform: translate(-5px, 2.5px);
-				background: var(--secondary);
-			}
-
-			.app-sidebar nav {
-				display: flex;
-				flex-direction: row;
-				justify-content: center;
-				align-items: center;
-			}
-
-			.app-sidebar nav ul {
-				display: flex;
-				flex-direction: column;
-				justify-content: center;
-				transform: translate(-5%, 0);
-				gap: 2vh;
-			}
-
-			.app-sidebar nav ul li a {
-				font-size: clamp(12px, 1.5vw, 18px);
-				font-weight: 200;
-			}
-
-			.app-sidebar nav ul li::before {
-				content: '';
-				display: inline-block;
-				width: 0.25vw;
-				max-width: 5px;
-				height: 1.75vw;
-				max-height: 20px;
-				transform: translate(-5px, 2.5px);
-				background: var(--primary);
 			}
 
 			.app-banner {
@@ -318,127 +235,10 @@
 				border: none;
 			}
 
-			.app-main {
-				position: fixed;
-				z-index: 0;
-				display: flex;
-				flex-direction: column;
-				align-items: stretch;
-				justify-content: flex-start;
-				right: 2.5%;
-				bottom: 2.5%;
-				min-width: 74.25%;
-				min-height: 82%;
-				height: 82%;
-				max-width: 74.25%;
-				max-height: 82%;
-				background: var(--bg-ghost);
-				border-radius: var(--br3);
-				transition: min-width 0.5s ease;
-				will-change: min-width, scroll-position;
-				overflow-y: auto;
-				overflow-x: hidden;
-				scroll-behavior: smooth;
-				font-family: 'Inter';
-				padding-bottom: 2.5%;
-			}
-
-			.app-main.toggled {
-				min-width: 95%;
-			}
-
-			.app-main header {
-				top: 0;
-				position: sticky;
-				background: var(--botti);
-				display: flex;
-				flex-direction: row;
-				justify-content: flex-start;
-				align-items: center;
-				gap: 20px;
-				margin-top: 0%;
-				padding: 0 2.5%;
-				min-height: 12.5%;
-				width: 100%;
-			}
-
-			.app-main header button#toggle {
-				position: relative;
-				min-height: 12px;
-				min-width: 18px;
-				border: solid 1.5px var(--text);
-				border-radius: var(--br1);
-				background-color: transparent;
-			}
-
-			.app-main header button#toggle::after {
-				content: '';
-				display: block;
-				position: absolute;
-				top: 20%;
-				left: 0;
-				min-height: 0.5px;
-				min-width: 100%;
-				background: var(--text);
-			}
-
-			.app-main header button#toggle::before {
-				content: '';
-				display: block;
-				position: absolute;
-				bottom: 0;
-				left: 25%;
-				min-height: 80%;
-				min-width: 0.5px;
-				background: var(--text);
-			}
-
-			.app-main header button#toggle.toggled::before {
-				background: transparent;
-			}
-
-			.app-main header button#add-widget {
-				position: absolute;
-				right: 2.5%;
-				border: none;
-				background: none;
-				color: var(--text);
-				font-family: 'Inter';
-			}
-
-			.app-main div.content {
-				min-height: 75%;
-				min-width: 100%;
-				height: 75%;
-				width: 100%;
-				max-height: 75%;
-				max-width: 100%;
-				padding: 2.5%;
-				display: flex;
-				flex-direction: row;
-				flex-wrap: wrap;
-				justify-content: center;
-				align-items: center;
-				gap: 75px;
-			}
-
-			.app-main div.content footer {
-				min-height: 0.1%;
-				min-width: 100%;
-			}
-
-			.item {
-				min-width: 32vh;
-				min-height: 18vh;
-				max-width: 32vh;
-				max-height: 18vh;
-				background: var(--bg-ghost);
-				border-radius: var(--br2);
-			}
-
 			div.menu-buttons,
 			#hide-banner,
-			#hide-sidebar {
+			#hide-sidebar,
+			footer {
 				display: none;
 			}
 
@@ -458,32 +258,6 @@
 			}
 
 			@media (orientation: portrait) {
-				.app-main {
-					min-width: 95%;
-				}
-
-				.app-main header button#toggle {
-					display: none;
-				}
-
-				.app-main header p.heading {
-					margin-left: 2vh;
-					max-height: 20px;
-					font-size: clamp(12px, 2.75vh, 20px);
-				}
-
-				.app-main header button#add-widget {
-					margin-right: 2vh;
-					font-size: clamp(12px, 2.25vh, 16px);
-					transform: translate(0, 0.5vh);
-				}
-
-				.app-main header p.heading::before {
-					height: 3vh;
-					width: 0.5vh;
-					transform: translate(-1vh, 0.2vh);
-				}
-
 				.app-banner {
 					transition: transform 0.5s ease;
 					transform: translate(-50%, -110%);
@@ -496,12 +270,17 @@
 					gap: 2vh;
 				}
 
+				footer {
+					min-height: 0.1%;
+					min-width: 100%;
+					display: block;
+				}
+
 				.app-banner.toggled {
 					transform: translate(-50%, 0);
 				}
 
-				.app-banner button#hide-banner,
-				.app-sidebar button#hide-sidebar {
+				.app-banner button#hide-banner {
 					display: block;
 					border: none;
 					background: transparent;
@@ -509,10 +288,6 @@
 					position: fixed;
 					top: 3vh;
 					font-size: 4vh;
-				}
-
-				.app-sidebar button#hide-sidebar {
-					left: 3.5vh;
 				}
 
 				.app-banner button#hide-banner {
@@ -686,71 +461,9 @@
 					background: var(--text);
 					border-radius: 0.5vh;
 				}
-
-				.app-sidebar {
-					top: 50%;
-					left: 50%;
-					transform: translate(-50%, -155%);
-					min-width: 95%;
-					min-height: 95%;
-					background: var(--botti);
-				}
-
-				.app-sidebar.toggled {
-					transform: translate(-50%, -50%);
-				}
-
-				.app-sidebar header {
-					display: flex;
-					flex-direction: row;
-					justify-content: center;
-					align-items: center;
-					margin-top: 20%;
-					height: 20%;
-					width: 90%;
-				}
-
-				.app-sidebar header p.heading {
-					font-size: 4vh;
-				}
-
-				.app-sidebar header p.heading::before {
-					min-height: 4vh;
-					min-width: 0.5vh;
-				}
-
-				.app-sidebar nav {
-					display: flex;
-					flex-direction: row;
-					justify-content: center;
-					align-items: center;
-				}
-
-				.app-sidebar nav ul {
-					display: flex;
-					flex-direction: column;
-					justify-content: center;
-					transform: translate(0, 0);
-					gap: 5vh;
-				}
-
-				.app-sidebar nav ul li a {
-					font-size: clamp(12px, 3.5vh, 24px);
-					font-weight: 300;
-				}
-
-				.app-sidebar nav ul li::before {
-					content: '';
-					display: inline-block;
-					width: 0.5vh;
-					max-width: 0.5vh;
-					height: 3.5vh;
-					max-height: 24px;
-					transform: translate(-5px, 2.5px);
-					background: var(--primary);
-				}
 			}
 		</style>
+		<link rel="stylesheet" href="./style.css" />
 	</head>
 	<body>
 		<div class="menu-buttons">
@@ -801,136 +514,26 @@
 			</div>
 		</header>
 
-		<main class="app-main">
-			<header>
-				<button id="toggle" title="Muuta näkymää"></button>
-				<p class="heading">TÄRKEIMMÄT:</p>
-				<button id="add-widget">lisää widget <strong>+</strong></button>
-			</header>
+		<main class="split-layout">
+			<section id="ui">
+				<p class="heading">KUSTOMOI KÄYTTÖLIITTYMÄ:</p>
 
-			<div class="content">
-				<div class="item"></div>
-				<div class="item"></div>
-				<div class="item"></div>
-				<div class="item"></div>
-				<div class="item"></div>
-				<div class="item"></div>
-				<div class="item"></div>
-				<div class="item"></div>
-				<div class="item"></div>
-				<div class="item"></div>
-				<div class="item"></div>
-				<footer></footer>
-			</div>
+				<div id="ui-settings">
+					<div id="theme" class="sub-section"></div>
+					<div id="contrast" class="sub-section"></div>
+					<div id="colors" class="sub-section"></div>
+				</div>
+
+				<div id="ui-preview"></div>
+			</section>
+
+			<section id="intel">
+				<p class="heading">KÄYTTÄJÄN ASETUKSET:</p>
+			</section>
+
+			<footer></footer>
 		</main>
 
-		<aside class="app-sidebar">
-			<button id="hide-sidebar">✕</button>
-			<header>
-				<p class="heading">SOVELLUKSET:</p>
-			</header>
-			<nav>
-				<ul>
-					<li><a href="">Polku yrittäjäksi</a></li>
-					<li><a href="">Oma talous</a></li>
-					<li><a href="">To-Do</a></li>
-				</ul>
-			</nav>
-		</aside>
-
-		<script>
-			(function () {
-				const aside = document.querySelector('.app-sidebar');
-				const main = document.querySelector('main');
-				const toggleBtn = document.getElementById('toggle');
-				const appsBtn = document.getElementById('applications');
-				const hideSidebarBtn = document.getElementById('hide-sidebar');
-				const appBanner = document.querySelector('.app-banner');
-				const burgerBtn = document.getElementById('burger');
-				const hideBannerBtn = document.getElementById('hide-banner');
-				if (!aside || !main || !toggleBtn || !appsBtn || !hideSidebarBtn || !appBanner || !burgerBtn || !hideBannerBtn) return;
-
-				// merge and replace history.state
-				function replaceState(partial) {
-					const prev = history.state || {};
-					history.replaceState({ ...prev, ...partial }, '', location.href);
-				}
-
-				// open===true means visible
-				function setSidebar(open, push = true) {
-					aside.classList.toggle('toggled', !open);
-					toggleBtn.classList.toggle('toggled', !open);
-					main.classList.toggle('toggled', !open);
-					if (push) replaceState({ sidebarOpen: open });
-				}
-
-				function setBanner(open, push = true) {
-					appBanner.classList.toggle('toggled', open);
-					if (push) replaceState({ bannerOpen: open });
-				}
-
-				// apply saved state (or defaults) without pushing
-				function applyState() {
-					const s = history.state || {};
-					setSidebar(s.sidebarOpen !== false, false);
-					setBanner(s.bannerOpen === true, false);
-				}
-
-				// DOM load & history navigation
-				window.addEventListener('DOMContentLoaded', applyState);
-				window.addEventListener('popstate', applyState);
-
-				// toggle handlers
-				toggleBtn.addEventListener('click', () => {
-					const isOpen = history.state?.sidebarOpen !== false;
-					setSidebar(!isOpen, true);
-				});
-				appsBtn.addEventListener('click', () => {
-					const isOpen = history.state?.sidebarOpen !== false;
-					setSidebar(!isOpen, true);
-				});
-				hideSidebarBtn.addEventListener('click', () => {
-					const isOpen = history.state?.sidebarOpen !== false;
-					setSidebar(!isOpen, true);
-				});
-				burgerBtn.addEventListener('click', () => {
-					const isOpen = history.state?.bannerOpen === true;
-					setBanner(!isOpen, true);
-				});
-				hideBannerBtn.addEventListener('click', () => {
-					const isOpen = history.state?.bannerOpen === true;
-					setBanner(!isOpen, true);
-				});
-
-				// orientation handlers
-				window.matchMedia('(orientation: landscape)').addEventListener('change', (e) => {
-					if (e.matches) {
-						applyState();
-						appBanner.classList.remove('toggled');
-						document.body.focus();
-					}
-				});
-				window.matchMedia('(orientation: portrait)').addEventListener('change', (e) => {
-					if (e.matches) {
-						applyState();
-						// reset to portrait defaults
-						setBanner(false, false);
-						setSidebar(true, false);
-					}
-				});
-			})();
-		</script>
-
-		<script>
-			document.addEventListener('click', (e) => {
-				const link = e.target.closest('a');
-				if (!link || !link.href) return;
-				e.preventDefault();
-				document.body.classList.add('fade');
-				setTimeout(() => {
-					window.location.href = link.href;
-				}, 125);
-			});
-		</script>
+		<script src="./script.js" defer></script>
 	</body>
 </html>
