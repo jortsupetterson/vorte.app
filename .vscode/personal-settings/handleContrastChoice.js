@@ -1,16 +1,10 @@
 export default function handleContrastChoice() {
-	document.getElementById('low').addEventListener('click', () => {
-		document.documentElement.setAttribute('data-contrast', 'low');
-		localStorage.setItem('contrast', 'low');
-	});
+	const contrastOptions = ['low', 'normal', 'high'];
 
-	document.getElementById('normal').addEventListener('click', () => {
-		document.documentElement.setAttribute('data-contrast', 'normal');
-		localStorage.setItem('contrast', 'normal');
-	});
-
-	document.getElementById('high').addEventListener('click', () => {
-		document.documentElement.setAttribute('data-contrast', 'high');
-		localStorage.setItem('contrast', 'high');
+	contrastOptions.forEach((contrastOption) => {
+		document.getElementById(contrastOption).addEventListener('click', () => {
+			document.documentElement.setAttribute('data-contrast', contrastOption);
+		});
+		localStorage.setItem('contrast', contrastOption);
 	});
 }

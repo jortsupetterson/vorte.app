@@ -187,19 +187,18 @@ input[type=color]::-webkit-color-swatch {
     background: var(--secondary-ghost);
   }
 
-    button#delete-user {
-    position: absolute;
-    top: 100%;
+    button#delete-user, button#reset-styles {
+    position: relative;
     border: none;
     background: transparent;
-    padding: 5vh;
     font-weight: 600;
     font-family: 'Inter';
     color: var(--text);
   }
 
   @media (hover: hover) and (pointer: fine) {
-      button#delete-user:focus, button#delete-user:hover {
+      button#delete-user:focus, button#delete-user:hover,
+      button#reset-styles:focus, button#reset-styles:hover {
         color: red;
         text-decoration: underline;
   }
@@ -224,10 +223,6 @@ input[type=color]::-webkit-color-swatch {
 
   main.split-layout section {
     width: 95%;
-  }
-
-  button#delete-user {
-    top: 180%;
   }
 }
 

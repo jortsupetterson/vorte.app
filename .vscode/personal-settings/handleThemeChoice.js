@@ -1,11 +1,10 @@
 export default function handleThemeChoice() {
-	document.getElementById('dark').addEventListener('click', () => {
-		document.documentElement.setAttribute('data-theme', 'dark');
-		localStorage.setItem('theme', 'dark');
-	});
+	const themeOptions = ['dark', 'light'];
 
-	document.getElementById('light').addEventListener('click', () => {
-		document.documentElement.setAttribute('data-theme', 'light');
-		localStorage.setItem('theme', 'light');
+	themeOptions.forEach((themeOption) => {
+		document.getElementById(themeOption).addEventListener('click', () => {
+			document.documentElement.setAttribute('data-theme', themeOption);
+			localStorage.setItem('theme', themeOption);
+		});
 	});
 }

@@ -1,10 +1,15 @@
 import handleThemeChoice from './handleThemeChoice.js';
 import handleContrastChoice from './handleContrastChoice.js';
 import handleAccentColorChoices from './handleAccentColorChoices.js';
+import handleStyleReset from './handleStyleReset.js';
 
+handleAccentColorChoices();
 handleThemeChoice();
 handleContrastChoice();
-handleAccentColorChoices();
+
+document.getElementById('reset-styles').addEventListener('click', () => {
+	handleStyleReset();
+});
 
 (function () {
 	const aside = document.querySelector('.app-sidebar');
