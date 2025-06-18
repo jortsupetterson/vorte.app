@@ -1,11 +1,3 @@
-import handleThemeChoice from './handleThemeChoice.js';
-import handleContrastChoice from './handleContrastChoice.js';
-import handleAccentColorChoices from './handleAccentColorChoices.js';
-
-handleThemeChoice();
-handleContrastChoice();
-handleAccentColorChoices();
-
 (function () {
 	const aside = document.querySelector('.app-sidebar');
 	const main = document.querySelector('main');

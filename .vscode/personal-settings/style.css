@@ -18,6 +18,10 @@ main.split-layout section {
   background: var(--bg-ghost);
   border-radius: var(--br3);
   min-height: 95%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 main.split-layout section p.heading {
@@ -41,45 +45,106 @@ main.split-layout section p.heading::before {
     main.split-layout section div#ui-settings {
         position: absolute;
         top: 10%;
-        min-width: 100%;
-        min-height: 50%;
-        background: rebeccapurple;
+        min-width: 85%;
+        max-width: 85%;
+        min-height: 90%;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: space-evenly;
         align-items: center;
     }
 
-    main.split-layout section div#ui-preview {
-        position: absolute;
-        top: 60%;
-        min-width: 100%;
-        min-height: 40%;
-        background: red;
-    }
-
     main.split-layout section div.sub-section {
-        background: var(--bg-ghost);
-        border-radius: var(--br2);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      background: var(--bg-ghost);
+      border-radius: var(--br2);
+      padding: 3%;
+      gap: 2vh;
+      min-width: 100%;
     }
 
     main.split-layout section div.sub-section p.sub-heading {
     font-family: 'Poppins';
     font-weight: 400;
     font-size: clamp(12px, 3vh ,20px);
-    position: absolute;
+    position: relative;
     left: 10%;
     top: 5%;
-}
+    }
 
-main.split-layout section div.sub-section p.heading::before {
+main.split-layout section div.sub-section p.sub-heading::before {
 	content: '';
 	display: inline-block;
-	background: var(--secondary);
+	background: var(--primary);
     height: clamp(12px, 2.75vh ,20px);
     width: clamp(1px,0.5vh,3.5px);
     transform: translate(-100%, 10%);
 	}
+
+  main.split-layout section div.sub-section div.choice {
+    min-width: 85%;
+    margin-left: 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 2.5%;
+    align-items: center;
+  }
+
+  main.split-layout section div.sub-section div.choice button {
+    border: none;
+    background: transparent;
+    padding: 1vh 2vh;
+    border-radius: var(--br1);
+    color: var(--text);
+  }
+
+  main.split-layout section div.sub-section div.choice input[type=color] {
+    border: none;
+    background: transparent;
+    border-radius: 100%;
+    padding: 0;
+    min-height: 4vh;
+    max-height: 4vh;
+    min-width: 4vh;
+    max-width: 4vh;
+  }
+
+    main.split-layout section div.sub-section div.choice input[type=color].ghost {
+      opacity: 60%;
+  }
+
+  input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+  border: none;
+}
+
+input[type="color"]::-webkit-color-swatch {
+  border: none;
+  border-radius: 50%;
+}
+
+   html[data-theme=dark] main.split-layout section div.sub-section div.choice button#dark {
+    background: var(--secondary-ghost);
+  }
+
+  html[data-theme=light] main.split-layout section div.sub-section div.choice button#light {
+    background: var(--secondary-ghost);
+  }
+
+  html[data-contrast=low] main.split-layout section div.sub-section div.choice button#low {
+    background: var(--secondary-ghost);
+  }
+
+  html[data-contrast=normal] main.split-layout section div.sub-section div.choice button#normal {
+    background: var(--secondary-ghost);
+  }
+
+  html[data-contrast=high] main.split-layout section div.sub-section div.choice button#high {
+    background: var(--secondary-ghost);
+  }
 
 @media (orientation: landscape) {
   main.split-layout {

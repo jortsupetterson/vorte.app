@@ -1,7 +1,7 @@
-
+import getOpenGraphCard from '../../../../shared/getOpenGraphCard.js';
 
 export default function renderView(lang) {
-    return `
+	return `
            <!DOCTYPE html>
            <html lang="fi" data-theme="dark" data-contrast="normal">
            <head>
@@ -10,17 +10,18 @@ export default function renderView(lang) {
            <link rel="stylesheet" href="/dash/style.css">
            <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1, user-scalable=no">
            <title>${
-                {
-                    fi: 'Ohjauspaneeli | Vorte',
-                    sv: 'Kontrollpanel | Vorte',
-                    en: 'Control panel | Vorte',
-                }[lang]
-            }</title>
+							{
+								fi: 'Ohjauspaneeli | Vorte',
+								sv: 'Kontrollpanel | Vorte',
+								en: 'Control panel | Vorte',
+							}[lang]
+						}</title>
        </head>
        <body>
+            ${getOpenGraphCard()}
            ${getAppBanner(lang)}
        <script type="module" src="/dash/app.js" defer></script>
        </body>
        </html>
-    ` 
+    `;
 }

@@ -1,0 +1,104 @@
+main.split-layout {
+  position: fixed;
+  top: 15%;
+  left: 0;
+  right: 0;
+  min-width: 100%;
+  width: 100%;
+  max-width: 100%;
+  min-height: 85%;
+  height: 85%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+main.split-layout section {
+  position: relative;
+  background: var(--bg-ghost);
+  border-radius: var(--br3);
+  min-height: 95%;
+}
+
+main.split-layout section p.heading {
+    font-family: 'Poppins';
+    font-weight: 400;
+    font-size: clamp(12px, 3vh ,20px);
+    position: absolute;
+    left: 10%;
+    top: 5%;
+}
+
+main.split-layout section p.heading::before {
+	content: '';
+	display: inline-block;
+	background: var(--secondary);
+    height: clamp(12px, 2.75vh ,20px);
+    width: clamp(1px,0.5vh,3.5px);
+    transform: translate(-100%, 10%);
+	}
+
+    main.split-layout section div#ui-settings {
+        position: absolute;
+        top: 10%;
+        min-width: 100%;
+        min-height: 50%;
+        background: rebeccapurple;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    main.split-layout section div#ui-preview {
+        position: absolute;
+        top: 60%;
+        min-width: 100%;
+        min-height: 40%;
+        background: red;
+    }
+
+    main.split-layout section div.sub-section {
+        background: var(--bg-ghost);
+        border-radius: var(--br2);
+    }
+
+    main.split-layout section div.sub-section p.sub-heading {
+    font-family: 'Poppins';
+    font-weight: 400;
+    font-size: clamp(12px, 3vh ,20px);
+    position: absolute;
+    left: 10%;
+    top: 5%;
+}
+
+main.split-layout section div.sub-section p.heading::before {
+	content: '';
+	display: inline-block;
+	background: var(--secondary);
+    height: clamp(12px, 2.75vh ,20px);
+    width: clamp(1px,0.5vh,3.5px);
+    transform: translate(-100%, 10%);
+	}
+
+@media (orientation: landscape) {
+  main.split-layout {
+    flex-direction: row;
+  }
+
+  main.split-layout section {
+    width: 46%;
+    max-width: 46%;
+  }
+}
+
+@media (orientation: portrait) {
+  main.split-layout {
+    flex-direction: column;
+    gap: 3vh;
+  }
+
+  main.split-layout section {
+    width: 95%;
+  }
+}

@@ -1,51 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light" data-contrast="normal">
+<html lang="en" data-theme="light">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no" />
 		<title>Omat asetukset | Vorte</title>
-
-		<script async nonce="${nonce}">
-			// Teema
-			const dQ = window.matchMedia('(prefers-color-scheme: dark)'),
-				lQ = window.matchMedia('(prefers-color-scheme: light)'),
-				applyTheme = (t) => document.documentElement.setAttribute('data-theme', t),
-				sT = localStorage.getItem('theme');
-
-			sT ? applyTheme(sT) : applyTheme(dQ.matches ? 'dark' : 'light');
-
-			dQ.addEventListener('change', (e) => {
-				localStorage.getItem('theme') || applyTheme(e.matches ? 'dark' : 'light');
-			});
-			lQ.addEventListener('change', (e) => {
-				localStorage.getItem('theme') || applyTheme(e.matches ? 'light' : 'dark');
-			});
-
-			// Kontrasti
-			const cHQ = window.matchMedia('(prefers-contrast: high)'),
-				cLQ = window.matchMedia('(prefers-contrast: low)'),
-				applyContrast = (t) => document.documentElement.setAttribute('data-contrast', t),
-				sC = localStorage.getItem('contrast');
-
-			sC ? applyContrast(sC) : cHQ.matches ? applyContrast('high') : cLQ.matches ? applyContrast('low') : applyContrast('normal');
-
-			cHQ.addEventListener('change', (e) => {
-				localStorage.getItem('contrast') || applyContrast(e.matches ? 'high' : 'normal');
-			});
-			cLQ.addEventListener('change', (e) => {
-				localStorage.getItem('contrast') || applyContrast(e.matches ? 'low' : 'normal');
-			});
-
-			// Accent colorit
-			const accentColors = ['primary', 'secondary', 'primary-ghost', 'secondary-ghost'];
-			accentColors.forEach((accentColor) => {
-				// Aseta tallennettu väri suoraan dokumenttiin
-				const saved = localStorage.getItem(accentColor);
-				if (saved) {
-					document.documentElement.style.setProperty(`--${accentColor}`, saved);
-				}
-			});
-		</script>
 
 		<style>
 			@font-face {
@@ -288,9 +246,7 @@
 				a:hover,
 				a:focus,
 				#add-widget:hover,
-				#add-widget:focus,
-				input:hover,
-				input:focus {
+				#add-widget:focus {
 					text-decoration: underline;
 					cursor: pointer;
 				}
@@ -563,33 +519,12 @@
 				<p class="heading">KUSTOMOI KÄYTTÖLIITTYMÄ:</p>
 
 				<div id="ui-settings">
-					<div id="theme" class="sub-section">
-						<p class="sub-heading">Teema</p>
-						<div class="choice">
-							<button id="dark">tumma</button>
-							<button id="light">vaalea</button>
-						</div>
-					</div>
-
-					<div id="colors" class="sub-section">
-						<p class="sub-heading">Kontrasti</p>
-						<div class="choice">
-							<button id="low">matala</button>
-							<button id="normal">normaali</button>
-							<button id="high">korkea</button>
-						</div>
-					</div>
-
-					<div id="contrast" class="sub-section">
-						<p class="sub-heading">Korostus</p>
-						<div class="choice">
-							<input type="color" value="#199473" id="primary" />
-							<input type="color" value="#0B4F60" id="secondary" />
-							<input type="color" value="#199473" id="primary-ghost" class="ghost" />
-							<input type="color" value="#0B4F60" id="secondary-ghost" class="ghost" />
-						</div>
-					</div>
+					<div id="theme" class="sub-section"></div>
+					<div id="contrast" class="sub-section"></div>
+					<div id="colors" class="sub-section"></div>
 				</div>
+
+				<div id="ui-preview"></div>
 			</section>
 
 			<section id="intel">
@@ -599,6 +534,6 @@
 			<footer></footer>
 		</main>
 
-		<script type="module" src="./script.js" defer></script>
+		<script src="./script.js" defer></script>
 	</body>
 </html>

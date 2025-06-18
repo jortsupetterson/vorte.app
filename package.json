@@ -12,6 +12,6 @@
 		"postcss": "^8.5.6",
 		"postcss-cli": "^11.0.1",
 		"postcss-discard-duplicates": "^7.0.2",
-		"wrangler": "^4.20.0"
+		"wrangler": "^4.20.2"
 	}
 }
