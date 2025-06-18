@@ -18,10 +18,14 @@ main.split-layout section {
   background: var(--bg-ghost);
   border-radius: var(--br3);
   min-height: 95%;
+  height: auto;
+  max-height: 95%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 main.split-layout section p.heading {
@@ -42,7 +46,7 @@ main.split-layout section p.heading::before {
     transform: translate(-100%, 10%);
 	}
 
-    main.split-layout section div#ui-settings {
+    main.split-layout section div#ui-settings, main.split-layout section div#user-settings {
         position: absolute;
         top: 10%;
         min-width: 85%;
@@ -50,8 +54,10 @@ main.split-layout section p.heading::before {
         min-height: 90%;
         display: flex;
         flex-direction: column;
-        justify-content: space-evenly;
+        justify-content: flex-start;
         align-items: center;
+        margin-top: 3vh;
+        gap: 3vh;
     }
 
     main.split-layout section div.sub-section {
@@ -60,9 +66,11 @@ main.split-layout section p.heading::before {
       flex-direction: column;
       background: var(--bg-ghost);
       border-radius: var(--br2);
-      padding: 3%;
+      padding: 5% 3%;
       gap: 2vh;
       min-width: 100%;
+      overflow-x: hidden;
+      overflow-y: auto;
     }
 
     main.split-layout section div.sub-section p.sub-heading {
@@ -70,7 +78,7 @@ main.split-layout section p.heading::before {
     font-weight: 400;
     font-size: clamp(12px, 3vh ,20px);
     position: relative;
-    left: 10%;
+    left: 6%;
     top: 5%;
     }
 
@@ -84,10 +92,11 @@ main.split-layout section div.sub-section p.sub-heading::before {
 	}
 
   main.split-layout section div.sub-section div.choice {
-    min-width: 85%;
-    margin-left: 10%;
+    min-width: 90%;
+    margin-left: 5%;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: flex-start;
     gap: 2.5%;
     align-items: center;
@@ -101,30 +110,62 @@ main.split-layout section div.sub-section p.sub-heading::before {
     color: var(--text);
   }
 
+  main.split-layout section div.sub-section div.choice div.field {
+    display: flex;
+    flex-direction: column;
+    min-width: 45.25%;
+    max-width: 45.25%;
+    margin: 0.5vh;
+  }
+
+    main.split-layout section div.sub-section div.choice div.field label {
+     border-radius: var(--br1);
+     color: var(--text);
+     font-size: clamp(12px,2vh,20px);
+     max-width: 100%;
+  }
+
+  main.split-layout section div.sub-section div.choice div.field input {
+    background: var(--bg-ghost);
+     border: none;
+     padding: 1vh 2vh;
+     border-radius: var(--br1);
+     color: var(--text);
+     font-size: clamp(12px,2vh,20px);
+     max-width: 100%;
+  }
+
   main.split-layout section div.sub-section div.choice input[type=color] {
-    border: none;
     background: transparent;
     border-radius: 100%;
     padding: 0;
-    min-height: 4vh;
-    max-height: 4vh;
-    min-width: 4vh;
-    max-width: 4vh;
+    min-height: 5vh;
+    max-height: 5vh;
+    min-width: 5vh;
+    max-width: 5vh;
   }
 
-    main.split-layout section div.sub-section div.choice input[type=color].ghost {
+  main.split-layout section div.sub-section div.choice input[type=color].ghost {
       opacity: 60%;
   }
 
-  input[type="color"]::-webkit-color-swatch-wrapper {
+input[type=color]::-webkit-color-swatch-wrapper {
   padding: 0;
   border: none;
 }
 
-input[type="color"]::-webkit-color-swatch {
+input[type=color]::-webkit-color-swatch {
   border: none;
   border-radius: 50%;
 }
+
+  main.split-layout section div.sub-section div.choice div.field#email-field {
+    min-width: 95%;
+    max-width: 95%;
+  }
+
+
+
 
    html[data-theme=dark] main.split-layout section div.sub-section div.choice button#dark {
     background: var(--secondary-ghost);
@@ -146,6 +187,24 @@ input[type="color"]::-webkit-color-swatch {
     background: var(--secondary-ghost);
   }
 
+    button#delete-user {
+    position: absolute;
+    top: 100%;
+    border: none;
+    background: transparent;
+    padding: 5vh;
+    font-weight: 600;
+    font-family: 'Inter';
+    color: var(--text);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+      button#delete-user:focus, button#delete-user:hover {
+        color: red;
+        text-decoration: underline;
+  }
+  }
+  
 @media (orientation: landscape) {
   main.split-layout {
     flex-direction: row;
@@ -166,4 +225,9 @@ input[type="color"]::-webkit-color-swatch {
   main.split-layout section {
     width: 95%;
   }
+
+  button#delete-user {
+    top: 180%;
+  }
 }
+

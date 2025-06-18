@@ -289,8 +289,8 @@
 				a:focus,
 				#add-widget:hover,
 				#add-widget:focus,
-				input:hover,
-				input:focus {
+				input[type='color']:hover,
+				input[type='color']:focus {
 					text-decoration: underline;
 					cursor: pointer;
 				}
@@ -592,12 +592,42 @@
 				</div>
 			</section>
 
-			<section id="intel">
+			<section id="user">
 				<p class="heading">KÄYTTÄJÄN ASETUKSET:</p>
+				<div id="user-settings">
+					<div class="sub-section">
+						<p class="sub-heading">Omat tiedot</p>
+						<div class="choice">
+							<div class="field">
+								<label for="firstname">Etunimi*</label>
+								<input id="firstname" type="text" value="Botti" required />
+							</div>
+
+							<div class="field">
+								<label for="lastname">Sukunimi*</label>
+								<input id="lastname" type="text" value="Example" required />
+							</div>
+
+							<div class="field" id="email-field">
+								<label for="email">Sähköposti*</label>
+								<input id="email" type="email" value="botti.example@mail.com" required />
+							</div>
+						</div>
+					</div>
+					<div class="sub-section">
+						<p class="sub-heading">Tunnistautuminen</p>
+						<div class="choice"><button>email</button><button>google</button><button>microsoft</button></div>
+					</div>
+					<div class="sub-section">
+						<p class="sub-heading">Vastaan ota uutiskirje Vortelta</p>
+					</div>
+				</div>
 			</section>
 
 			<footer></footer>
 		</main>
+
+		<button id="delete-user">poista käyttäjä</button>
 
 		<script type="module" src="./script.js" defer></script>
 	</body>
